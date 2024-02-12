@@ -42,6 +42,7 @@
             border-radius: 50%;
             width: 100px;
             height: 100px;
+            object-fit: cover;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -104,12 +105,16 @@
     <main>
         <section id="profile-section">
             <div id="user-profile">
+                <label for="username">Choose Your Name:</label>
+                <input type="text" id="username" placeholder="Your Name">
                 <img id="profile-picture" src="" alt="Profile Picture">
-                <h2 id="username"></h2>
+                <input type="file" id="file-input" accept="image/*">
+                <button onclick="uploadProfile()">Upload Profile</button>
+                <h2 id="username-display"></h2>
                 <p id="bio"></p>
             </div>
             <div id="upload-section">
-                <input type="file" id="file-input" accept="image/*">
+                <input type="file" id="post-file-input" accept="image/*">
                 <button onclick="uploadPicture()">Upload Picture</button>
                 <textarea id="comment-input" placeholder="Type your bio..."></textarea>
                 <button onclick="updateBio()">Update Bio</button>
@@ -127,7 +132,7 @@
 
         function loadUserProfile() {
             const profilePicture = document.getElementById('profile-picture');
-            const usernameElement = document.getElementById('username');
+            const usernameElement = document.getElementById('username-display');
             const bioElement = document.getElementById('bio');
 
             const userData = {
@@ -141,8 +146,26 @@
             bioElement.textContent = userData.bio;
         }
 
-        function uploadPicture() {
+        function uploadProfile() {
+            const usernameInput = document.getElementById('username');
             const fileInput = document.getElementById('file-input');
+            const profilePicture = document.getElementById('profile-picture');
+            const usernameElement = document.getElementById('username        .profile-picture');
+            
+            const username = usernameInput.value;
+            const file = fileInput.files[0];
+
+            if (username && file) {
+                // Display the uploaded profile picture and set the username
+                profilePicture.src = URL.createObjectURL(file);
+                document.getElementById('username-display').textContent = username;
+            } else {
+                alert('Please enter a username and select a file to upload.');
+            }
+        }
+
+        function uploadPicture() {
+            const fileInput = document.getElementById('post-file-input');
             const file = fileInput.files[0];
 
             if (file) {
@@ -205,3 +228,4 @@
     </script>
 </body>
 </html>
+
