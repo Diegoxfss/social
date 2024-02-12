@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #fafafa;
         }
 
         header {
-            background-color: #333;
+            background-color: #405de6;
             color: white;
             text-align: center;
             padding: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         main {
@@ -25,6 +27,11 @@
         #profile-section {
             display: flex;
             justify-content: space-between;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         #user-profile {
@@ -35,6 +42,7 @@
             border-radius: 50%;
             width: 100px;
             height: 100px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         #upload-section {
@@ -45,17 +53,46 @@
             margin-bottom: 10px;
         }
 
+        #bio {
+            margin-top: 10px;
+        }
+
         .post {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
             margin-bottom: 20px;
+            overflow: hidden;
         }
 
         .post-image {
             width: 100%;
             max-height: 400px;
+            object-fit: cover;
+        }
+
+        .post-actions {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .post-actions button {
+            background-color: #405de6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #comment-input {
+            width: calc(100% - 15px);
+            padding: 8px;
             margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
     </style>
     <title>Simple Social Media</title>
@@ -74,23 +111,12 @@
             <div id="upload-section">
                 <input type="file" id="file-input" accept="image/*">
                 <button onclick="uploadPicture()">Upload Picture</button>
+                <textarea id="comment-input" placeholder="Type your bio..."></textarea>
+                <button onclick="updateBio()">Update Bio</button>
             </div>
         </section>
         <section id="post-section">
-            <div class="post" data-post-id="1">
-                <img class="post-image" src="post1.jpg" alt="Post 1">
-                <p class="post-actions">
-                    <button onclick="likePost(1)">Like</button>
-                    <button onclick="commentPost(1)">Comment</button>
-                </p>
-            </div>
-            <div class="post" data-post-id="2">
-                <img class="post-image" src="post2.jpg" alt="Post 2">
-                <p class="post-actions">
-                    <button onclick="likePost(2)">Like</button>
-                    <button onclick="commentPost(2)">Comment</button>
-                </p>
-            </div>
+            <!-- Posts will be dynamically added here -->
         </section>
     </main>
     <script>
@@ -120,48 +146,26 @@
             const file = fileInput.files[0];
 
             if (file) {
-                alert('Picture uploaded!');
-            } else {
-                alert('Please select a file to upload.');
-            }
-        }
+                const postSection = document.getElementById('post-section');
 
-        function likePost(postId) {
-            alert(`Liked post ${postId}!`);
-        }
-
-        function commentPost(postId) {
-            alert(`Commented on post ${postId}!`);
-        }
-
-        function loadPosts() {
-            const postSection = document.getElementById('post-section');
-
-            const posts = [
-                { id: 1, imageUrl: 'post1.jpg' },
-                { id: 2, imageUrl: 'post2.jpg' },
-            ];
-
-            posts.forEach(post => {
+                // Display the uploaded picture as a new post
                 const postElement = document.createElement('div');
                 postElement.classList.add('post');
-                postElement.setAttribute('data-post-id', post.id);
 
                 const postImage = document.createElement('img');
                 postImage.classList.add('post-image');
-                postImage.src = post.imageUrl;
-                postImage.alt = `Post ${post.id}`;
+                postImage.src = URL.createObjectURL(file);
 
-                const postActions = document.createElement('p');
+                const postActions = document.createElement('div');
                 postActions.classList.add('post-actions');
 
                 const likeButton = document.createElement('button');
                 likeButton.textContent = 'Like';
-                likeButton.addEventListener('click', () => likePost(post.id));
+                likeButton.addEventListener('click', () => likePost(postElement));
 
                 const commentButton = document.createElement('button');
                 commentButton.textContent = 'Comment';
-                commentButton.addEventListener('click', () => commentPost(post.id));
+                commentButton.addEventListener('click', () => commentPost(postElement));
 
                 postActions.appendChild(likeButton);
                 postActions.appendChild(commentButton);
@@ -169,8 +173,34 @@
                 postElement.appendChild(postImage);
                 postElement.appendChild(postActions);
 
-                postSection.appendChild(postElement);
-            });
+                postSection.prepend(postElement);
+            } else {
+                alert('Please select a file to upload.');
+            }
+        }
+
+        function likePost(postElement) {
+            alert('Liked the post!');
+            // Implement actual like logic here
+        }
+
+        function commentPost(postElement) {
+            const commentInput = prompt('Enter your comment:');
+            if (commentInput) {
+                const commentSection = document.createElement('div');
+                commentSection.textContent = `User123: ${commentInput}`;
+                postElement.appendChild(commentSection);
+            }
+        }
+
+        function updateBio() {
+            const newBio = document.getElementById('comment-input').value;
+            const bioElement = document.getElementById('bio');
+            bioElement.textContent = newBio;
+        }
+
+        function loadPosts() {
+            // For initial load, you can use the same approach as before
         }
     </script>
 </body>
