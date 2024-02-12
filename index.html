@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        #profile-section {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #user-profile {
+            text-align: center;
+        }
+
+        #profile-picture {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        #upload-section {
+            text-align: center;
+        }
+
+        #file-input {
+            margin-bottom: 10px;
+        }
+
+        .post {
+            margin-bottom: 20px;
+        }
+
+        .post-image {
+            width: 100%;
+            max-height: 400px;
+        }
+
+        .post-actions button {
+            margin-right: 10px;
+        }
+    </style>
+    <title>Simple Social Media</title>
+</head>
+<body>
+    <header>
+        <h1>Simple Social Media</h1>
+    </header>
+    <main>
+        <section id="profile-section">
+            <div id="user-profile">
+                <img id="profile-picture" src="" alt="Profile Picture">
+                <h2 id="username"></h2>
+                <p id="bio"></p>
+            </div>
+            <div id="upload-section">
+                <input type="file" id="file-input" accept="image/*">
+                <button onclick="uploadPicture()">Upload Picture</button>
+            </div>
+        </section>
+        <section id="post-section">
+            <div class="post" data-post-id="1">
+                <img class="post-image" src="post1.jpg" alt="Post 1">
+                <p class="post-actions">
+                    <button onclick="likePost(1)">Like</button>
+                    <button onclick="commentPost(1)">Comment</button>
+                </p>
+            </div>
+            <div class="post" data-post-id="2">
+                <img class="post-image" src="post2.jpg" alt="Post 2">
+                <p class="post-actions">
+                    <button onclick="likePost(2)">Like</button>
+                    <button onclick="commentPost(2)">Comment</button>
+                </p>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadUserProfile();
+            loadPosts();
+        });
+
+        function loadUserProfile() {
+            const profilePicture = document.getElementById('profile-picture');
+            const usernameElement = document.getElementById('username');
+            const bioElement = document.getElementById('bio');
+
+            const userData = {
+                profilePicture: 'default-profile.jpg',
+                username: 'User123',
+                bio: 'This is my bio.',
+            };
+
+            profilePicture.src = userData.profilePicture;
+            usernameElement.textContent = userData.username;
+            bioElement.textContent = userData.bio;
+        }
+
+        function uploadPicture() {
+            const fileInput = document.getElementById('file-input');
+            const file = fileInput.files[0];
+
+            if (file) {
+                alert('Picture uploaded!');
+            } else {
+                alert('Please select a file to upload.');
+            }
+        }
+
+        function likePost(postId) {
+            alert(`Liked post ${postId}!`);
+        }
+
+        function commentPost(postId) {
+            alert(`Commented on post ${postId}!`);
+        }
+
+        function loadPosts() {
+            const postSection = document.getElementById('post-section');
+
+            const posts = [
+                { id: 1, imageUrl: 'post1.jpg' },
+                { id: 2, imageUrl: 'post2.jpg' },
+            ];
+
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('post');
+                postElement.setAttribute('data-post-id', post.id);
+
+                const postImage = document.createElement('img');
+                postImage.classList.add('post-image');
+                postImage.src = post.imageUrl;
+                postImage.alt = `Post ${post.id}`;
+
+                const postActions = document.createElement('p');
+                postActions.classList.add('post-actions');
+
+                const likeButton = document.createElement('button');
+                likeButton.textContent = 'Like';
+                likeButton.addEventListener('click', () => likePost(post.id));
+
+                const commentButton = document.createElement('button');
+                commentButton.textContent = 'Comment';
+                commentButton.addEventListener('click', () => commentPost(post.id));
+
+                postActions.appendChild(likeButton);
+                postActions.appendChild(commentButton);
+
+                postElement.appendChild(postImage);
+                postElement.appendChild(postActions);
+
+                postSection.appendChild(postElement);
+            });
+        }
+    </script>
+</body>
+</html>
