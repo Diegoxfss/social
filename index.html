@@ -94,12 +94,34 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+   .emoji-button {
+            cursor: pointer;
+        }
+
+        .emoji-list {
+            display: none;
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            z-index: 1;
+        }
+
+        .emoji-list button {
+            border: none;
+            background: none;
+            padding: 5px;
+            cursor: pointer;
+        }
     </style>
-    <title>Simple Social Media</title>
+    <title>Advanced Social Media</title>
 </head>
 <body>
     <header>
-        <h1>Simple Social Media</h1>
+        <h1>Advanced Social Media</h1>
     </header>
     <main>
         <section id="profile-section">
@@ -109,8 +131,10 @@
                 <p id="bio"></p>
             </div>
             <div id="upload-section">
-                <input type="file" id="file-input" accept="image/*">
-                <button onclick="uploadPicture()">Upload Picture</button>
+                <input type="file" id="avatar-input" accept="image/*">
+                <button onclick="uploadAvatar()">Upload Avatar</button>
+                <input type="text" id="friend-search" placeholder="Find Friends">
+                <button onclick="findFriends()">Find Friends</button>
                 <textarea id="comment-input" placeholder="Type your bio..."></textarea>
                 <button onclick="updateBio()">Update Bio</button>
             </div>
@@ -126,81 +150,278 @@
         });
 
         function loadUserProfile() {
-            const profilePicture = document.getElementById('profile-picture');
-            const usernameElement = document.getElementById('username');
-            const bioElement = document.getElementById('bio');
-
+            // Placeholder for fetching user data from the backend
+            // Replace with actual backend API calls
             const userData = {
                 profilePicture: 'default-profile.jpg',
                 username: 'User123',
                 bio: 'This is my bio.',
             };
 
+            const profilePicture = document.getElementById('profile-picture');
+            const usernameElement = document.getElementById('username');
+            const bioElement = document.getElementById('bio');
+
             profilePicture.src = userData.profilePicture;
             usernameElement.textContent = userData.username;
             bioElement.textContent = userData.bio;
         }
 
-        function uploadPicture() {
-            const fileInput = document.getElementById('file-input');
-            const file = fileInput.files[0];
+        function uploadAvatar() {
+            const avatarInput = document.getElementById('avatar-input');
+            const file = avatarInput.files[0];
 
             if (file) {
-                const postSection = document.getElementById('post-section');
+                const formData = new FormData();
+                formData.append('avatar', file);
 
-                // Display the uploaded picture as a new post
-                const postElement = document.createElement('div');
-                postElement.classList.add('post');
-
-                const postImage = document.createElement('img');
-                postImage.classList.add('post-image');
-                postImage.src = URL.createObjectURL(file);
-
-                const postActions = document.createElement('div');
-                postActions.classList.add('post-actions');
-
-                const likeButton = document.createElement('button');
-                likeButton.textContent = 'Like';
-                likeButton.addEventListener('click', () => likePost(postElement));
-
-                const commentButton = document.createElement('button');
-                commentButton.textContent = 'Comment';
-                commentButton.addEventListener('click', () => commentPost(postElement));
-
-                postActions.appendChild(likeButton);
-                postActions.appendChild(commentButton);
-
-                postElement.appendChild(postImage);
-                postElement.appendChild(postActions);
-
-                postSection.prepend(postElement);
+                // Placeholder for sending the avatar to the backend
+                // Replace with actual backend API call
+                fetch('/api/upload-avatar', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Avatar uploaded successfully!');
+                        loadUserProfile();
+                    } else {
+                        alert('Failed to upload avatar.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error uploading avatar:', error);
+                });
             } else {
                 alert('Please select a file to upload.');
             }
         }
 
-        function likePost(postElement) {
-            alert('Liked the post!');
-            // Implement actual like logic here
-        }
+        function findFriends() {
+            const friendSearch = document.getElementById('friend-search').value;
 
-        function commentPost(postElement) {
-            const commentInput = prompt('Enter your comment:');
-            if (commentInput) {
-                const commentSection = document.createElement('div');
-                commentSection.textContent = `User123: ${commentInput}`;
-                postElement.appendChild(commentSection);
-            }
+            // Placeholder for searching friends on the backend
+            // Replace with actual backend API call
+            fetch(`/api/find-friends?q=${friendSearch}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Process and display search results
+                    console.log('Found friends:', data);
+                })
+                .catch(error => {
+                    console.error('Error finding friends:', error);
+                });
         }
 
         function updateBio() {
             const newBio = document.getElementById('comment-input').value;
-            const bioElement = document.getElementById('bio');
-            bioElement.textContent = newBio;
+
+            // Placeholder for updating user bio on the backend
+            // Replace with actual backend API call
+            fetch('/api/update-bio', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ bio: newBio }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Bio updated successfully!');
+                    loadUserProfile();
+                } else {
+                    alert('Failed to update bio.');
+                }
+            })
+            .catch(error => {
+                console.error('Error updating bio:', error);
+            });
+        }
+
+        function likePost(postId) {
+            // Placeholder for liking a post on the backend
+            // Replace with actual backend API call
+            fetch(`/api/like-post/${postId}`, {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Post liked successfully!');
+                    // Refresh the posts after liking
+                    loadPosts();
+                } else {
+                    alert('Failed to like the post.');
+                }
+            })
+            .catch(error => {
+                console.error('Error liking post:', error);
+            });
+        }
+
+        function commentPost(postId) {
+            const commentInput = prompt('Enter your comment:');
+            if (commentInput) {
+                // Placeholder for commenting on a post on the backend
+                // Replace with actual backend API call
+                fetch(`/api/comment-post/${postId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ comment: commentInput }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Comment posted successfully!');
+                        // Refresh the posts after commenting
+                        loadPosts();
+                    } else {
+                        alert('Failed to post the comment.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error posting comment:', error);
+                });
+            }
+        }
+
+        function commentOnComment(commentId, postId) {
+            const nestedCommentInput = prompt('Enter your comment:');
+            if (nestedCommentInput) {
+                // Placeholder for commenting on a comment on the backend
+                // Replace with actual backend API call
+                fetch(`/api/comment-on-comment/${postId}/${commentId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ comment: nestedCommentInput }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Comment posted successfully!');
+                        // Refresh the posts after commenting
+                        loadPosts();
+                    } else {
+                        alert('Failed to post the comment.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error posting comment:', error);
+                });
+            }
+        }
+
+        function addEmojiButtons(targetElement, postId) {
+            const emojiButton = document.createElement('button');
+            emojiButton.textContent = '😊';
+            emojiButton.classList.add('emoji-button');
+            emojiButton.addEventListener('click', () => showEmojiList(emojiButton));
+
+            const emojiList = document.createElement('div');
+            emojiList.classList.add('emoji-list');
+            emojiList.innerHTML = `
+                <button onclick="addEmoji('${targetElement.id}', '😊', ${postId})">😊</button>
+                <button onclick="addEmoji('${targetElement.id}', '👍', ${postId})">👍</button>
+                <button onclick="addEmoji('${targetElement.id}', '❤️', ${postId})">❤️</button>
+            `;
+
+            targetElement.appendChild(emojiButton);
+            targetElement.appendChild(emojiList);
+        }
+
+        function showEmojiList(emojiButton) {
+            const emojiList = emojiButton.nextElementSibling;
+            emojiList.style.display = emojiList.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function addEmoji(targetId, emoji, postId) {
+            const targetElement = document.getElementById(targetId);
+            targetElement.textContent += ` ${emoji} `;
+
+            // Placeholder for adding emoji to a post on the backend
+            // Replace with actual backend API call
+            fetch(`/api/add-emoji/${postId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ emoji }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    console.error('Failed to add emoji to the post:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error adding emoji:', error);
+            });
         }
 
         function loadPosts() {
-            // For initial load, you can use the same approach as before
+            // Placeholder for fetching posts from the backend
+            // Replace with actual backend API call
+            fetch('/api/get-posts')
+                .then(response => response.json())
+                .then(data => {
+                    const postSection = document.getElementById('post-section');
+                    postSection.innerHTML = '';
+
+                    data.posts.forEach(post => {
+                        const postElement = document.createElement('div');
+                        postElement.classList.add('post');
+                        postElement.setAttribute('data-post-id', post.id);
+
+                        const postImage = document.createElement('img');
+                        postImage.classList.add('post-image');
+                        postImage.src = post.imageUrl;
+
+                        const postActions = document.createElement('div');
+                        postActions.classList.add('post-actions');
+
+                        const likeButton = document.createElement('button');
+                        likeButton.textContent = 'Like';
+                        likeButton.addEventListener('click', () => likePost(post.id));
+
+                        const commentButton = document.createElement('button');
+                        commentButton.textContent = 'Comment';
+                        commentButton.addEventListener('click', () => commentPost(post.id));
+
+                        postActions.appendChild(likeButton);
+                        postActions.appendChild(commentButton);
+
+                        const commentsSection = document.createElement('div');
+                        commentsSection.classList.add('comments-section');
+
+                        post.comments.forEach(comment => {
+                            const commentElement = document.createElement('div');
+                            commentElement.textContent = `${comment.user}: ${comment.text}`;
+                            addEmojiButtons(commentElement, post.id);
+
+                            const replyButton = document.createElement('button');
+                            replyButton.textContent = 'Reply';
+                            replyButton.addEventListener('click', () => commentOnComment(comment.id, post.id));
+
+                            commentElement.appendChild(replyButton);
+                            commentsSection.appendChild(commentElement);
+                        });
+
+                        postElement.appendChild(postImage);
+                        postElement.appendChild(postActions);
+                        postElement.appendChild(commentsSection);
+
+                        postSection.appendChild(postElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading posts:', error);
+                });
         }
     </script>
 </body>
