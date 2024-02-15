@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -95,6 +96,18 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        #social-media-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #social-media-icons i {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #405de6;
+            cursor: pointer;
+        }
     </style>
     <title>Simple Social Media</title>
 </head>
@@ -113,6 +126,9 @@
                 <h2 id="username-display"></h2>
                 <p id="bio"></p>
             </div>
+        </section>
+
+        <section id="upload-section">
             <div id="upload-section">
                 <input type="file" id="post-file-input" accept="image/*">
                 <button onclick="uploadPicture()">Upload Picture</button>
@@ -120,38 +136,47 @@
                 <button onclick="updateBio()">Update Bio</button>
             </div>
         </section>
+
+        <section id="biblical-studies-section">
+            <h2>Biblical Studies</h2>
+            <div id="study-section">
+                <!-- Biblical studies will be dynamically added here -->
+            </div>
+            <div id="add-study-section">
+                <input type="file" id="study-file-input" accept=".pdf, .doc, .docx">
+                <button onclick="uploadStudy()">Upload Study</button>
+                <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
+            </div>
+        </section>
+
         <section id="post-section">
             <!-- Posts will be dynamically added here -->
         </section>
     </main>
+
+    <footer>
+        <!-- Your existing social media icons -->
+        <div id="social-media-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin"></i>
+        </div>
+    </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            loginUser();
             loadUserProfile();
             loadPosts();
+            loadBiblicalStudies();
         });
-
-        function loadUserProfile() {
-            const profilePicture = document.getElementById('profile-picture');
-            const usernameElement = document.getElementById('username-display');
-            const bioElement = document.getElementById('bio');
-
-            const userData = {
-                profilePicture: 'default-profile.jpg',
-                username: 'User123',
-                bio: 'This is my bio.',
-            };
-
-            profilePicture.src = userData.profilePicture;
-            usernameElement.textContent = userData.username;
-            bioElement.textContent = userData.bio;
-        }
 
         function uploadProfile() {
             const usernameInput = document.getElementById('username');
             const fileInput = document.getElementById('file-input');
             const profilePicture = document.getElementById('profile-picture');
-            const usernameElement = document.getElementById('username        .profile-picture');
-            
+
             const username = usernameInput.value;
             const file = fileInput.files[0];
 
@@ -172,47 +197,10 @@
                 const postSection = document.getElementById('post-section');
 
                 // Display the uploaded picture as a new post
-                const postElement = document.createElement('div');
-                postElement.classList.add('post');
-
-                const postImage = document.createElement('img');
-                postImage.classList.add('post-image');
-                postImage.src = URL.createObjectURL(file);
-
-                const postActions = document.createElement('div');
-                postActions.classList.add('post-actions');
-
-                const likeButton = document.createElement('button');
-                likeButton.textContent = 'Like';
-                likeButton.addEventListener('click', () => likePost(postElement));
-
-                const commentButton = document.createElement('button');
-                commentButton.textContent = 'Comment';
-                commentButton.addEventListener('click', () => commentPost(postElement));
-
-                postActions.appendChild(likeButton);
-                postActions.appendChild(commentButton);
-
-                postElement.appendChild(postImage);
-                postElement.appendChild(postActions);
-
+                const postElement = createPostElement(file);
                 postSection.prepend(postElement);
             } else {
                 alert('Please select a file to upload.');
-            }
-        }
-
-        function likePost(postElement) {
-            alert('Liked the post!');
-            // Implement actual like logic here
-        }
-
-        function commentPost(postElement) {
-            const commentInput = prompt('Enter your comment:');
-            if (commentInput) {
-                const commentSection = document.createElement('div');
-                commentSection.textContent = `User123: ${commentInput}`;
-                postElement.appendChild(commentSection);
             }
         }
 
@@ -222,10 +210,158 @@
             bioElement.textContent = newBio;
         }
 
+        function uploadStudy() {
+            const fileInput = document.getElementById('study-file-input');
+            const file = fileInput.files[0];
+            const description = document.getElementById('study-description').value;
+
+            if (file) {
+                const studySection = document.getElementById('study-section');
+
+                // Display the uploaded study as a new entry
+                const studyElement = createStudyElement(file, description);
+                studySection.prepend(studyElement);
+            } else {
+                alert('Please select a file to upload.');
+            }
+        }
+
+        function createPostElement(file) {
+            const postElement = document.createElement('div');
+            postElement.classList.add('post');
+
+            const postImage = document.createElement('img');
+            postImage.classList.add('post-image');
+            postImage.src = URL.createObjectURL(file);
+
+            const postActions = document.createElement('div');
+            postActions.classList.add('post-actions');
+
+            const likeButton = document.createElement('button');
+            likeButton.textContent = 'Like';
+            likeButton.addEventListener('click', () => likePost(postElement));
+
+            const commentButton = document.createElement('button');
+            commentButton.textContent = 'Comment';
+            commentButton.addEventListener('click', () => commentPost(postElement));
+
+            postActions.appendChild(likeButton);
+            postActions.appendChild(commentButton);
+
+            postElement.appendChild(postImage);
+            postElement.appendChild(postActions);
+
+            return postElement;
+        }
+
+        function createStudyElement(file, description) {
+            const studyElement = document.createElement('div');
+            studyElement.classList.add('study');
+
+        const studyLink =             document.createElement('a');
+            studyLink.href = URL.createObjectURL(file);
+            studyLink.textContent = 'Download Study';
+
+            const studyDescription = document.createElement('p');
+            studyDescription.textContent = description;
+
+            const studyActions = document.createElement('div');
+            studyActions.classList.add('study-actions');
+
+            const likeButton = document.createElement('button');
+            likeButton.textContent = 'Like';
+            likeButton.addEventListener('click', () => likeStudy(studyElement));
+
+            const commentButton = document.createElement('button');
+            commentButton.textContent = 'Comment';
+            commentButton.addEventListener('click', () => commentStudy(studyElement));
+
+            studyActions.appendChild(likeButton);
+            studyActions.appendChild(commentButton);
+
+            studyElement.appendChild(studyLink);
+            studyElement.appendChild(studyDescription);
+            studyElement.appendChild(studyActions);
+
+            return studyElement;
+        }
+
+        function likePost(postElement) {
+            alert('Liked the post!');
+            // Implement actual like logic here
+        }
+
+        function likeStudy(studyElement) {
+            alert('Liked the study!');
+            // Implement actual like logic here
+        }
+
+        function commentPost(postElement) {
+            const commentInput = prompt('Enter your comment:');
+            if (commentInput) {
+                const commentSection = document.createElement('div');
+                commentSection.textContent = `${getUsername()}: ${commentInput}`;
+                postElement.appendChild(commentSection);
+            }
+        }
+
+        function commentStudy(studyElement) {
+            const commentInput = prompt('Enter your comment:');
+            if (commentInput) {
+                const commentSection = document.createElement('div');
+                commentSection.textContent = `${getUsername()}: ${commentInput}`;
+                studyElement.appendChild(commentSection);
+            }
+        }
+
+        function getUsername() {
+            return document.getElementById('username-display').textContent;
+        }
+
+        function displayRandomVerse() {
+            // Your existing Bible verses logic
+        }
+
+        function loginUser() {
+            const email = prompt('Enter your email:');
+            const password = prompt('Enter your password:');
+
+            if (email === 'diego@diego.com' && password === '101010') {
+                // Successful login
+                displayRandomVerse();
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        }
+
+        function loadUserProfile() {
+            // Placeholder for loading user profile data
+            const userData = {
+                profilePicture: 'default-profile.jpg',
+                username: 'User123',
+                bio: 'This is my bio.',
+            };
+
+            const profilePicture = document.getElementById('profile-picture');
+            const usernameElement = document.getElementById('username-display');
+            const bioElement = document.getElementById('bio');
+
+            profilePicture.src = userData.profilePicture;
+            usernameElement.textContent = userData.username;
+            bioElement.textContent = userData.bio;
+        }
+
         function loadPosts() {
-            // For initial load, you can use the same approach as before
+            // Placeholder for loading posts
+            // You can fetch posts from a server or use a database
+            // and dynamically create post elements in the #post-section
+        }
+
+        function loadBiblicalStudies() {
+            // Placeholder for loading biblical studies
+            // You can fetch studies from a server or use a database
+            // and dynamically create study elements in the #study-section
         }
     </script>
 </body>
 </html>
-
