@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #fafafa;
         }
 
         header {
-            background-color: #0288d1;
+            background-color: #405de6;
             color: white;
             text-align: center;
             padding: 1em;
@@ -23,116 +23,79 @@
         main {
             max-width: 800px;
             margin: 20px auto;
+        }
+
+        #profile-section {
+            display: flex;
+            justify-content: space-between;
             background-color: white;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-        }
-
-        section {
             margin-bottom: 20px;
-        }
-
-        #profile-section,
-        #upload-section,
-        #bio-section,
-        #broadcast-section,
-        #biblical-studies-section,
-        #ad-section {
-            background-color: #ffffff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
         }
 
         #user-profile {
             text-align: center;
-            margin-bottom: 20px;
         }
 
         #profile-picture {
             border-radius: 50%;
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
         }
 
-        #username-display {
-            font-size: 24px;
-            font-weight: bold;
+        #upload-section {
+            text-align: center;
+        }
+
+        #file-input {
             margin-bottom: 10px;
-            color: #333;
         }
 
         #bio {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 20px;
+            margin-top: 10px;
         }
 
-        #file-input,
-        #study-file-input,
-        #post-file-input,
-        #broadcast-link-input {
-            margin-bottom: 10px;
-        }
-
-        .post,
-        .study,
-        .broadcast {
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .post {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin-bottom: 20px;
-            padding: 20px;
-            position: relative;
+            overflow: hidden;
         }
 
-        .post-image,
-        .study-link,
-        .broadcast-link {
+        .post-image {
             width: 100%;
             max-height: 400px;
             object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 10px;
         }
 
-        .emojis {
-            margin-top: 10px;
+        .post-actions {
+            padding: 10px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .emojis button {
-            margin-right: 10px;
-            background-color: #fff;
+        .post-actions button {
+            background-color: #405de6;
+            color: white;
             border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        .emoji-count {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 16px;
-            color: #555;
+        #comment-input {
+            width: calc(100% - 15px);
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
-
-        #thumbs-up {
-            color: #4CAF50;
-        }
-
-        #heart {
-            color: #e53935;
-        }
-
-        #smile {
-            color: #ff9800;
-        }
-
         #social-media-icons {
             display: flex;
             justify-content: center;
@@ -142,43 +105,8 @@
         #social-media-icons i {
             font-size: 24px;
             margin: 0 10px;
-            color: #0288d1;
+            color: #405de6;
             cursor: pointer;
-        }
-
-        #ad-section {
-            background-color: #dcedc8;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        #ad-message {
-            font-size: 16px;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        #ad-placeholder {
-            height: 100px;
-            background-color: #f0f0f0;
-            border: 2px dashed #9e9e9e;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        #ad-placeholder:hover {
-            background-color: #e0e0e0;
-        }
-
-        #ad-placeholder img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 8px;
         }
     </style>
     <title>Simple Social Media</title>
@@ -189,68 +117,46 @@
     </header>
     <main>
         <section id="profile-section">
-            <!-- User Profile Section -->
             <div id="user-profile">
-                <img id="profile-picture" src="" alt="Foto de Perfil">
-                <div id="username-display"></div>
+                <label for="username">Choose Your Name:</label>
+                <input type="text" id="username" placeholder="Your Name">
+                <img id="profile-picture" src="" alt="Profile Picture">
+                <input type="file" id="file-input" accept="image/*">
+                <button onclick="uploadProfile()">Upload Profile</button>
+                <h2 id="username-display"></h2>
                 <p id="bio"></p>
             </div>
         </section>
 
         <section id="upload-section">
-            <!-- Upload Section -->
             <div id="upload-section">
-                <input type="text" id="username" placeholder="Digite seu nome de usuário">
-                <input type="file" id="file-input">
-                <button onclick="uploadProfile()">Atualizar Foto e Nome</button>
-            </div>
-        </section>
-
-        <section id="bio-section">
-            <!-- Bio Section -->
-            <div id="bio-section">
-                <textarea id="bio-input" placeholder="Digite sua biografia..."></textarea>
-                <button onclick="updateBio()">Atualizar Biografia</button>
-            </div>
-        </section>
-
-        <section id="broadcast-section">
-            <!-- Broadcast Section -->
-            <div id="broadcast-section">
-                <input type="text" id="broadcast-link-input" placeholder="Cole aqui o link para transmissão">
-                <button onclick="postBroadcast()">Enviar Transmissão</button>
+                <input type="file" id="post-file-input" accept="image/*">
+                <button onclick="uploadPicture()">Upload Picture</button>
+                <textarea id="comment-input" placeholder="Type your bio..."></textarea>
+                <button onclick="updateBio()">Update Bio</button>
             </div>
         </section>
 
         <section id="biblical-studies-section">
-            <!-- Biblical Studies Section -->
-            <h2>Estudos Bíblicos</h2>
+            <h2>Biblical Studies</h2>
             <div id="study-section">
-                <!-- Estudos Bíblicos serão adicionados dinamicamente aqui -->
+                <!-- Biblical studies will be dynamically added here -->
             </div>
             <div id="add-study-section">
                 <input type="file" id="study-file-input" accept=".pdf, .doc, .docx">
-                <button onclick="uploadStudy()">Enviar Estudo</button>
-                <textarea id="study-description" placeholder="Adicione uma descrição para seu estudo..."></textarea>
-            </div>
-        </section>
-
-        <section id="ad-section">
-            <!-- Ad Section -->
-            <p id="ad-message">Sua mensagem pode estar aqui!</p>
-            <div id="ad-placeholder" onclick="showAdDetails()">
-                <!-- Ad Placeholder -->
+                <button onclick="uploadStudy()">Upload Study</button>
+                <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
             </div>
         </section>
 
         <section id="post-section">
-            <!-- Posts Section -->
+            <!-- Posts will be dynamically added here -->
         </section>
     </main>
 
     <footer>
+        <!-- Your existing social media icons -->
         <div id="social-media-icons">
-            <!-- Social Media Icons -->
             <i class="fab fa-facebook"></i>
             <i class="fab fa-twitter"></i>
             <i class="fab fa-instagram"></i>
@@ -274,115 +180,124 @@
             const username = usernameInput.value;
             const file = fileInput.files[0];
 
-            if (file) {
-                // Display the uploaded profile picture
+            if (username && file) {
+                // Display the uploaded profile picture and set the username
                 profilePicture.src = URL.createObjectURL(file);
-
-                // Update the username if provided
-                if (username) {
-                    document.getElementById('username-display').textContent = username;
-                }
+                document.getElementById('username-display').textContent = username;
             } else {
-                alert('Por favor, selecione uma foto para enviar.');
+                alert('Please enter a username and select a file to upload.');
+            }
+        }
+
+        function uploadPicture() {
+            const fileInput = document.getElementById('post-file-input');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const postSection = document.getElementById('post-section');
+
+                // Display the uploaded picture as a new post
+                const postElement = createPostElement(file);
+                postSection.prepend(postElement);
+            } else {
+                alert('Please select a file to upload.');
             }
         }
 
         function updateBio() {
-            const newBio = document.getElementById('bio-input').value;
+            const newBio = document.getElementById('comment-input').value;
             const bioElement = document.getElementById('bio');
             bioElement.textContent = newBio;
         }
 
-        function postBroadcast() {
-            const linkInput = document.getElementById('broadcast-link-input');
-            const link = linkInput.value;
+        function uploadStudy() {
+            const fileInput = document.getElementById('study-file-input');
+            const file = fileInput.files[0];
+            const description = document.getElementById('study-description').value;
 
-            if (link) {
-                const broadcastSection = document.getElementById('broadcast-section');
+            if (file) {
+                const studySection = document.getElementById('study-section');
 
-                // Display the broadcast link as a new entry
-                const broadcastElement = createBroadcastElement(link);
-                broadcastSection.prepend(broadcastElement);
+                // Display the uploaded study as a new entry
+                const studyElement = createStudyElement(file, description);
+                studySection.prepend(studyElement);
             } else {
-                alert('Por favor, cole o link da transmissão para enviar.');
+                alert('Please select a file to upload.');
             }
         }
 
-        function createBroadcastElement(link) {
-            const broadcastElement = document.createElement('div');
-            broadcastElement.classList.add('broadcast');
+        function createPostElement(file) {
+            const postElement = document.createElement('div');
+            postElement.classList.add('post');
 
-            const broadcastLink = document.createElement('a');
-            broadcastLink.href = link;
-            broadcastLink.classList.add('broadcast-link');
-            broadcastLink.textContent = 'Assistir Transmissão';
+            const postImage = document.createElement('img');
+            postImage.classList.add('post-image');
+            postImage.src = URL.createObjectURL(file);
 
-            const broadcastActions = document.createElement('div');
-            broadcastActions.classList.add('broadcast-actions');
+            const postActions = document.createElement('div');
+            postActions.classList.add('post-actions');
 
             const likeButton = document.createElement('button');
-            likeButton.textContent = 'Curtir';
-            likeButton.addEventListener('click', () => likeBroadcast(broadcastElement));
+            likeButton.textContent = 'Like';
+            likeButton.addEventListener('click', () => likePost(postElement));
 
             const commentButton = document.createElement('button');
-            commentButton.textContent = 'Comentar';
-            commentButton.addEventListener('click', () => commentBroadcast(broadcastElement));
+            commentButton.textContent = 'Comment';
+            commentButton.addEventListener('click', () => commentPost(postElement));
 
-            const emojiSection = document.createElement('div');
-            emojiSection.classList.add('emojis');
-            emojiSection.appendChild(createEmojiButton('thumbs-up', '👍', () => reactToBroadcast(broadcastElement, 'thumbs-up')));
-            emojiSection.appendChild(createEmojiButton('heart', '❤️', () => reactToBroadcast(broadcastElement, 'heart')));
-            emojiSection.appendChild(createEmojiButton('smile', '😊', () => reactToBroadcast(broadcastElement, 'smile')));
+            postActions.appendChild(likeButton);
+            postActions.appendChild(commentButton);
 
-            broadcastActions.appendChild(likeButton);
-            broadcastActions.appendChild(commentButton);
-            broadcastActions.appendChild(emojiSection);
+            postElement.appendChild(postImage);
+            postElement.appendChild(postActions);
 
-            broadcastElement.appendChild(broadcastLink);
-            broadcastElement.appendChild(broadcastActions);
-
-            return broadcastElement;
+            return postElement;
         }
 
-        function createEmojiButton(id, emoji, onClick) {
-            const button = document.createElement('button');
-            button.id = id;
-            button.textContent = emoji;
-            button.addEventListener('click', onClick);
-            return button;
+        function createStudyElement(file, description) {
+            const studyElement = document.createElement('div');
+            studyElement.classList.add('study');
+
+        const studyLink =             document.createElement('a');
+            studyLink.href = URL.createObjectURL(file);
+            studyLink.textContent = 'Download Study';
+
+            const studyDescription = document.createElement('p');
+            studyDescription.textContent = description;
+
+            const studyActions = document.createElement('div');
+            studyActions.classList.add('study-actions');
+
+            const likeButton = document.createElement('button');
+            likeButton.textContent = 'Like';
+            likeButton.addEventListener('click', () => likeStudy(studyElement));
+
+            const commentButton = document.createElement('button');
+            commentButton.textContent = 'Comment';
+            commentButton.addEventListener('click', () => commentStudy(studyElement));
+
+            studyActions.appendChild(likeButton);
+            studyActions.appendChild(commentButton);
+
+            studyElement.appendChild(studyLink);
+            studyElement.appendChild(studyDescription);
+            studyElement.appendChild(studyActions);
+
+            return studyElement;
         }
 
-        function likeBroadcast(broadcastElement) {
-            alert('Curtiu a transmissão!');
-            // Implementar lógica real de curtir aqui
-        }
-
-        function commentBroadcast(broadcastElement) {
-            const commentInput = prompt('Digite seu comentário:');
-            if (commentInput) {
-                const commentSection = document.createElement('div');
-                commentSection.textContent = `${getUsername()}: ${commentInput}`;
-                broadcastElement.appendChild(commentSection);
-            }
-        }
-
-        function reactToBroadcast(broadcastElement, emoji) {
-            const emojiCount = getEmojiCountElement(broadcastElement, emoji);
-            incrementEmojiCount(emojiCount);
+        function likePost(postElement) {
+            alert('Liked the post!');
+            // Implement actual like logic here
         }
 
         function likeStudy(studyElement) {
-            alert('Curtiu o estudo!');
-            // Implementar lógica real de curtir aqui
-        }
-
-               function likePost(postElement) {
-            alert('Curtiu a postagem!');
-            // Implementar lógica real de curtir aqui
+            alert('Liked the study!');
+            // Implement actual like logic here
         }
 
         function commentPost(postElement) {
-            const commentInput = prompt('Digite seu comentário:');
+            const commentInput = prompt('Enter your comment:');
             if (commentInput) {
                 const commentSection = document.createElement('div');
                 commentSection.textContent = `${getUsername()}: ${commentInput}`;
@@ -391,7 +306,7 @@
         }
 
         function commentStudy(studyElement) {
-            const commentInput = prompt('Digite seu comentário:');
+            const commentInput = prompt('Enter your comment:');
             if (commentInput) {
                 const commentSection = document.createElement('div');
                 commentSection.textContent = `${getUsername()}: ${commentInput}`;
@@ -399,49 +314,23 @@
             }
         }
 
-        function reactToPost(postElement, emoji) {
-            const emojiCount = getEmojiCountElement(postElement, emoji);
-            incrementEmojiCount(emojiCount);
-        }
-
-        function reactToStudy(studyElement, emoji) {
-            const emojiCount = getEmojiCountElement(studyElement, emoji);
-            incrementEmojiCount(emojiCount);
-        }
-
-        function getEmojiCountElement(container, emoji) {
-            return container.querySelector(`#${emoji}-count`);
-        }
-
-        function incrementEmojiCount(emojiCount) {
-            let count = parseInt(emojiCount.textContent) || 0;
-            count++;
-            emojiCount.textContent = count;
-        }
-
         function getUsername() {
             return document.getElementById('username-display').textContent;
         }
 
-        function showAdDetails() {
-            // Placeholder for displaying ad details or redirecting to ad management page
-            alert('Detalhes do Anúncio');
-        }
-
         function displayRandomVerse() {
-            // Placeholder for displaying random Bible verses
-            // You can implement logic to randomly select and display verses
+            // Your existing Bible verses logic
         }
 
         function loginUser() {
-            const email = prompt('Digite seu e-mail:');
-            const password = prompt('Digite sua senha:');
+            const email = prompt('Enter your email:');
+            const password = prompt('Enter your password:');
 
             if (email === 'diego@diego.com' && password === '101010') {
-                // Login bem-sucedido
+                // Successful login
                 displayRandomVerse();
             } else {
-                alert('Credenciais inválidas. Por favor, tente novamente.');
+                alert('Invalid credentials. Please try again.');
             }
         }
 
@@ -449,8 +338,8 @@
             // Placeholder for loading user profile data
             const userData = {
                 profilePicture: 'default-profile.jpg',
-                username: 'Usuário123',
-                bio: 'Esta é a minha bio.',
+                username: 'User123',
+                bio: 'This is my bio.',
             };
 
             const profilePicture = document.getElementById('profile-picture');
@@ -476,5 +365,3 @@
     </script>
 </body>
 </html>
-
-
