@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fafafa;
+            background-color: #f5f5f5;
         }
 
         header {
-            background-color: #405de6;
+            background-color: #0288d1;
             color: white;
             text-align: center;
             padding: 1em;
@@ -23,20 +23,31 @@
         main {
             max-width: 800px;
             margin: 20px auto;
-        }
-
-        #profile-section {
-            display: flex;
-            justify-content: space-between;
             background-color: white;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+        }
+
+        section {
             margin-bottom: 20px;
         }
 
+        #profile-section,
+        #upload-section,
+        #biblical-studies-section,
+        #ad-section {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
         #user-profile {
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
         #profile-picture {
@@ -47,46 +58,50 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        #upload-section {
-            text-align: center;
-        }
-
-        #file-input {
+        #file-input,
+        #study-file-input,
+        #post-file-input {
             margin-bottom: 10px;
         }
 
-        #bio {
+        #bio,
+        #study-description {
             margin-top: 10px;
         }
 
-        .post {
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .post,
+        .study {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin-bottom: 20px;
-            overflow: hidden;
+            padding: 20px;
         }
 
         .post-image {
             width: 100%;
             max-height: 400px;
             object-fit: cover;
+            border-radius: 10px;
         }
 
-        .post-actions {
+        .post-actions,
+        .study-actions {
             padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .post-actions button {
-            background-color: #405de6;
+        .post-actions button,
+        .study-actions button {
+            background-color: #0288d1;
             color: white;
             border: none;
             padding: 8px 15px;
             border-radius: 5px;
             cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         #comment-input {
@@ -96,6 +111,20 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
+        .emojis {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .emojis button {
+            margin-right: 10px;
+            background-color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
         #social-media-icons {
             display: flex;
             justify-content: center;
@@ -105,8 +134,43 @@
         #social-media-icons i {
             font-size: 24px;
             margin: 0 10px;
-            color: #405de6;
+            color: #0288d1;
             cursor: pointer;
+        }
+
+        #ad-section {
+            background-color: #dcedc8;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #ad-message {
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        #ad-placeholder {
+            height: 100px;
+            background-color: #f0f0f0;
+            border: 2px dashed #9e9e9e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #ad-placeholder:hover {
+            background-color: #e0e0e0;
+        }
+
+        #ad-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
         }
     </style>
     <title>Simple Social Media</title>
@@ -117,45 +181,54 @@
     </header>
     <main>
         <section id="profile-section">
+            <!-- User Profile Section -->
             <div id="user-profile">
-                <label for="username">Choose Your Name:</label>
-                <input type="text" id="username" placeholder="Your Name">
-                <img id="profile-picture" src="" alt="Profile Picture">
+                <label for="username">Escolha Seu Nome:</label>
+                <input type="text" id="username" placeholder="Seu Nome">
+                <img id="profile-picture" src="" alt="Foto de Perfil">
                 <input type="file" id="file-input" accept="image/*">
-                <button onclick="uploadProfile()">Upload Profile</button>
+                <button onclick="uploadProfile()">Enviar Foto de Perfil</button>
                 <h2 id="username-display"></h2>
                 <p id="bio"></p>
             </div>
         </section>
 
         <section id="upload-section">
+            <!-- Upload Section -->
             <div id="upload-section">
                 <input type="file" id="post-file-input" accept="image/*">
-                <button onclick="uploadPicture()">Upload Picture</button>
-                <textarea id="comment-input" placeholder="Type your bio..."></textarea>
-                <button onclick="updateBio()">Update Bio</button>
+                <button onclick="uploadPicture()">Enviar Foto</button>
+                <textarea id="comment-input" placeholder="Digite sua bio..."></textarea>
+                <button onclick="updateBio()">Atualizar Bio</button>
             </div>
         </section>
 
         <section id="biblical-studies-section">
-            <h2>Biblical Studies</h2>
+            <!-- Biblical Studies Section -->
+            <h2>Estudos Bíblicos</h2>
             <div id="study-section">
-                <!-- Biblical studies will be dynamically added here -->
+                <!-- Estudos Bíblicos serão adicionados dinamicamente aqui -->
             </div>
             <div id="add-study-section">
                 <input type="file" id="study-file-input" accept=".pdf, .doc, .docx">
-                <button onclick="uploadStudy()">Upload Study</button>
-                <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
+                <button onclick="uploadStudy()">Enviar Estudo</button>
+                <textarea id="study-description" placeholder="Adicione uma descrição para seu estudo..."></textarea>
+            </div>
+        </section
+        <section id="ad-section">
+            <!-- Ad Section -->
+            <p id="ad-message">Sua mensagem pode estar aqui!</p>
+            <div id="ad-placeholder" onclick="showAdDetails()">
+                <!-- Ad Placeholder -->
             </div>
         </section>
 
         <section id="post-section">
-            <!-- Posts will be dynamically added here -->
+            <!-- Posts Section -->
         </section>
     </main>
 
     <footer>
-        <!-- Your existing social media icons -->
         <div id="social-media-icons">
             <i class="fab fa-facebook"></i>
             <i class="fab fa-twitter"></i>
@@ -185,7 +258,7 @@
                 profilePicture.src = URL.createObjectURL(file);
                 document.getElementById('username-display').textContent = username;
             } else {
-                alert('Please enter a username and select a file to upload.');
+                alert('Por favor, informe um nome de usuário e selecione uma foto para enviar.');
             }
         }
 
@@ -200,7 +273,7 @@
                 const postElement = createPostElement(file);
                 postSection.prepend(postElement);
             } else {
-                alert('Please select a file to upload.');
+                alert('Por favor, selecione uma foto para enviar.');
             }
         }
 
@@ -222,7 +295,7 @@
                 const studyElement = createStudyElement(file, description);
                 studySection.prepend(studyElement);
             } else {
-                alert('Please select a file to upload.');
+                alert('Por favor, selecione um arquivo para enviar.');
             }
         }
 
@@ -238,11 +311,11 @@
             postActions.classList.add('post-actions');
 
             const likeButton = document.createElement('button');
-            likeButton.textContent = 'Like';
+            likeButton.textContent = 'Curtir';
             likeButton.addEventListener('click', () => likePost(postElement));
 
             const commentButton = document.createElement('button');
-            commentButton.textContent = 'Comment';
+            commentButton.textContent = 'Comentar';
             commentButton.addEventListener('click', () => commentPost(postElement));
 
             postActions.appendChild(likeButton);
@@ -258,9 +331,9 @@
             const studyElement = document.createElement('div');
             studyElement.classList.add('study');
 
-        const studyLink =             document.createElement('a');
+            const studyLink = document.createElement('a');
             studyLink.href = URL.createObjectURL(file);
-            studyLink.textContent = 'Download Study';
+            studyLink.textContent = 'Baixar Estudo';
 
             const studyDescription = document.createElement('p');
             studyDescription.textContent = description;
@@ -269,11 +342,11 @@
             studyActions.classList.add('study-actions');
 
             const likeButton = document.createElement('button');
-            likeButton.textContent = 'Like';
+            likeButton.textContent = 'Curtir';
             likeButton.addEventListener('click', () => likeStudy(studyElement));
 
             const commentButton = document.createElement('button');
-            commentButton.textContent = 'Comment';
+            commentButton.textContent = 'Comentar';
             commentButton.addEventListener('click', () => commentStudy(studyElement));
 
             studyActions.appendChild(likeButton);
@@ -287,17 +360,17 @@
         }
 
         function likePost(postElement) {
-            alert('Liked the post!');
-            // Implement actual like logic here
+            alert('Curtiu a postagem!');
+            // Implementar lógica real de curtir aqui
         }
 
         function likeStudy(studyElement) {
-            alert('Liked the study!');
-            // Implement actual like logic here
+            alert('Curtiu o estudo!');
+            // Implementar lógica real de curtir aqui
         }
 
         function commentPost(postElement) {
-            const commentInput = prompt('Enter your comment:');
+            const commentInput = prompt('Digite seu comentário:');
             if (commentInput) {
                 const commentSection = document.createElement('div');
                 commentSection.textContent = `${getUsername()}: ${commentInput}`;
@@ -305,8 +378,8 @@
             }
         }
 
-        function commentStudy(studyElement) {
-            const commentInput = prompt('Enter your comment:');
+               function commentStudy(studyElement) {
+            const commentInput = prompt('Digite seu comentário:');
             if (commentInput) {
                 const commentSection = document.createElement('div');
                 commentSection.textContent = `${getUsername()}: ${commentInput}`;
@@ -318,19 +391,25 @@
             return document.getElementById('username-display').textContent;
         }
 
+        function showAdDetails() {
+            // Placeholder for displaying ad details or redirecting to ad management page
+            alert('Detalhes do Anúncio');
+        }
+
         function displayRandomVerse() {
-            // Your existing Bible verses logic
+            // Placeholder for displaying random Bible verses
+            // You can implement logic to randomly select and display verses
         }
 
         function loginUser() {
-            const email = prompt('Enter your email:');
-            const password = prompt('Enter your password:');
+            const email = prompt('Digite seu e-mail:');
+            const password = prompt('Digite sua senha:');
 
             if (email === 'diego@diego.com' && password === '101010') {
-                // Successful login
+                // Login bem-sucedido
                 displayRandomVerse();
             } else {
-                alert('Invalid credentials. Please try again.');
+                alert('Credenciais inválidas. Por favor, tente novamente.');
             }
         }
 
@@ -338,8 +417,8 @@
             // Placeholder for loading user profile data
             const userData = {
                 profilePicture: 'default-profile.jpg',
-                username: 'User123',
-                bio: 'This is my bio.',
+                username: 'Usuário123',
+                bio: 'Esta é a minha bio.',
             };
 
             const profilePicture = document.getElementById('profile-picture');
@@ -365,3 +444,4 @@
     </script>
 </body>
 </html>
+
