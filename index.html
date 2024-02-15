@@ -175,13 +175,12 @@
             max-height: 100%;
             border-radius: 8px;
         }
-
     </style>
     <title>Simple Social Media</title>
 </head>
 <body>
     <header>
-        <h1>Simple Social Media</h1>
+        <h1>Simple Social Media        </h1>
     </header>
     <main>
         <section id="profile-section">
@@ -196,6 +195,7 @@
         <section id="upload-section">
             <!-- Upload Section -->
             <div id="upload-section">
+                <input type="text" id="username" placeholder="Digite seu nome de usuário">
                 <input type="file" id="file-input">
                 <button onclick="uploadProfile()">Atualizar Foto e Nome</button>
             </div>
@@ -231,7 +231,7 @@
         <div id="social-media-icons">
             <!-- Social Media Icons -->
             <i class="fab fa-facebook"></i>
-            <i class           ="fab fa-twitter"></i>
+            <i class="fab fa-twitter"></i>
             <i class="fab fa-instagram"></i>
             <i class="fab fa-linkedin"></i>
         </div>
@@ -253,34 +253,17 @@
             const username = usernameInput.value;
             const file = fileInput.files[0];
 
-            if (username && file) {
-                // Display the uploaded profile picture and set the username
-                profilePicture.src = URL.createObjectURL(file);
-                document.getElementById('username-display').textContent = username;
-            } else {
-                alert('Por favor, informe um nome de usuário e selecione uma foto para enviar.');
-            }
-        }
-
-        function uploadPicture() {
-            const fileInput = document.getElementById('post-file-input');
-            const file = fileInput.files[0];
-
             if (file) {
-                const postSection = document.getElementById('post-section');
+                // Display the uploaded profile picture
+                profilePicture.src = URL.createObjectURL(file);
 
-                // Display the uploaded picture as a new post
-                const postElement = createPostElement(file);
-                postSection.prepend(postElement);
+                // Update the username if provided
+                if (username) {
+                    document.getElementById('username-display').textContent = username;
+                }
             } else {
                 alert('Por favor, selecione uma foto para enviar.');
             }
-        }
-
-        function updateBio() {
-            const newBio = document.getElementById('comment-input').value;
-            const bioElement = document.getElementById('bio');
-            bioElement.textContent = newBio;
         }
 
         function uploadStudy() {
@@ -297,41 +280,6 @@
             } else {
                 alert('Por favor, selecione um arquivo para enviar.');
             }
-        }
-
-        function createPostElement(file) {
-            const postElement = document.createElement('div');
-            postElement.classList.add('post');
-
-            const postImage = document.createElement('img');
-            postImage.classList.add('post-image');
-            postImage.src = URL.createObjectURL(file);
-
-            const postActions = document.createElement('div');
-            postActions.classList.add('post-actions');
-
-            const likeButton = document.createElement('button');
-            likeButton.textContent = 'Curtir';
-            likeButton.addEventListener('click', () => likePost(postElement));
-
-            const commentButton = document.createElement('button');
-            commentButton.textContent = 'Comentar';
-            commentButton.addEventListener('click', () => commentPost(postElement));
-
-            const emojiSection = document.createElement('div');
-            emojiSection.classList.add('emojis');
-            emojiSection.appendChild(createEmojiButton('thumbs-up', '👍', () => reactToPost(postElement, 'thumbs-up')));
-            emojiSection.appendChild(createEmojiButton('heart', '❤️', () => reactToPost(postElement, 'heart')));
-            emojiSection.appendChild(createEmojiButton('smile', '😊', () => reactToPost(postElement, 'smile')));
-
-            postActions.appendChild(likeButton);
-            postActions.appendChild(commentButton);
-            postActions.appendChild(emojiSection);
-
-            postElement.appendChild(postImage);
-            postElement.appendChild(postActions);
-
-            return postElement;
         }
 
         function createStudyElement(file, description) {
@@ -382,23 +330,9 @@
             return button;
         }
 
-        function likePost(postElement) {
-            alert('Curtiu a postagem!');
-            // Implementar lógica real de curtir aqui
-        }
-
         function likeStudy(studyElement) {
             alert('Curtiu o estudo!');
             // Implementar lógica real de curtir aqui
-        }
-
-        function commentPost(postElement) {
-            const commentInput = prompt('Digite seu comentário:');
-            if (commentInput) {
-                const commentSection = document.createElement('div');
-                commentSection.textContent = `${getUsername()}: ${commentInput}`;
-                postElement.appendChild(commentSection);
-            }
         }
 
         function commentStudy(studyElement) {
@@ -410,12 +344,7 @@
             }
         }
 
-        function reactToPost(postElement, emoji) {
-            const emojiCount = getEmojiCountElement(postElement, emoji);
-            incrementEmojiCount(emojiCount);
-        }
-
-        function reactToStudy(studyElement,            emoji) {
+        function reactToStudy(studyElement, emoji) {
             const emojiCount = getEmojiCountElement(studyElement, emoji);
             incrementEmojiCount(emojiCount);
         }
@@ -461,7 +390,7 @@
             const userData = {
                 profilePicture: 'default-profile.jpg',
                 username: 'Usuário123',
-                bio: 'Esta é a minha bio.',
+                bio: 'Esta é a minhabio.',
             };
 
             const profilePicture = document.getElementById('profile-picture');
