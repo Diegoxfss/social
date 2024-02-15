@@ -44,29 +44,36 @@
         }
 
         #user-profile {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             margin-bottom: 20px;
         }
 
         #profile-picture {
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        #username-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #bio {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
         }
 
         #file-input,
         #study-file-input,
         #post-file-input {
             margin-bottom: 10px;
-        }
-
-        #bio,
-        #study-description {
-            margin-top: 10px;
         }
 
         .post,
@@ -172,6 +179,7 @@
             max-height: 100%;
             border-radius: 8px;
         }
+
     </style>
     <title>Simple Social Media</title>
 </head>
@@ -183,12 +191,8 @@
         <section id="profile-section">
             <!-- User Profile Section -->
             <div id="user-profile">
-                <label for="username">Escolha Seu Nome:</label>
-                <input type="text" id="username" placeholder="Seu Nome">
                 <img id="profile-picture" src="" alt="Foto de Perfil">
-                <input type="file" id="file-input" accept="image/*">
-                <button onclick="uploadProfile()">Enviar Foto de Perfil</button>
-                <h2 id="username-display"></h2>
+                <div id="username-display"></div>
                 <p id="bio"></p>
             </div>
         </section>
@@ -214,11 +218,12 @@
                 <button onclick="uploadStudy()">Enviar Estudo</button>
                 <textarea id="study-description" placeholder="Adicione uma descrição para seu estudo..."></textarea>
             </div>
-        </section
+        </section>
+
         <section id="ad-section">
             <!-- Ad Section -->
             <p id="ad-message">Sua mensagem pode estar aqui!</p>
-            <div id="ad-placeholder" onclick="showAdDetails()">
+                  <div id="ad-placeholder" onclick="showAdDetails()">
                 <!-- Ad Placeholder -->
             </div>
         </section>
@@ -230,6 +235,7 @@
 
     <footer>
         <div id="social-media-icons">
+            <!-- Social Media Icons -->
             <i class="fab fa-facebook"></i>
             <i class="fab fa-twitter"></i>
             <i class="fab fa-instagram"></i>
@@ -378,7 +384,7 @@
             }
         }
 
-               function commentStudy(studyElement) {
+        function commentStudy(studyElement) {
             const commentInput = prompt('Digite seu comentário:');
             if (commentInput) {
                 const commentSection = document.createElement('div');
