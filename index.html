@@ -136,12 +136,12 @@
                 <button onclick="uploadProfile()">Upload Profile</button>
                 <h2 id="username-display"></h2>
                 <p id="bio"></p>
-                 <textarea id="comment-input" placeholder="Type your bio..."></textarea>
+                <textarea id="comment-input" placeholder="Type your bio..."></textarea>
                 <button onclick="updateBio()">Update Bio</button>
             </div>
         </section>
 
-     <section id="upload-section">
+        <section id="upload-section">
             <h2>Upload Picture</h2>
             <div id="upload-section">
                 <input type="file" id="post-file-input" accept="image/*">
@@ -160,7 +160,6 @@
                 <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
             </div>
         </section>
-
         <section id="youtube-section">
             <h2>YouTube Videos</h2>
             <div id="youtube-container">
@@ -184,8 +183,8 @@
         </div>
     </footer>
 
-   <script>
-  // Event listener when the DOM is fully loaded
+    <script>
+        // Event listener when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', function () {
             loginUser();
             loadUserProfile();
@@ -368,7 +367,7 @@
 
             const likeButton = document.createElement('button');
             likeButton.textContent = 'Like';
-            likeButton.addEventListener('click', () => likeYouTubeVideo(youtube            Element));
+            likeButton.addEventListener('click', () => likeYouTubeVideo(youtubeElement));
 
             const commentButton = document.createElement('button');
             commentButton.textContent = 'Comment';
@@ -486,9 +485,5 @@
         }
     </script>
 </body>
-
 </html>
 
-</script>
-</body>
-</html>
