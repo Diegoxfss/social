@@ -27,8 +27,7 @@
 
         #profile-section {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: space-between;
             background-color: white;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -42,31 +41,52 @@
 
         #profile-picture {
             border-radius: 50%;
-            width: 150px; /* Adjusted size */
-            height: 150px; /* Adjusted size */
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
+        }
+
+        #upload-section {
+            text-align: center;
         }
 
         #file-input {
             margin-bottom: 10px;
         }
 
-        #upload-section,
-        #add-study-section,
-        #youtube-section {
-            text-align: center;
-            margin-top: 20px;
+        #bio {
+            margin-top: 10px;
         }
 
-        #post-file-input,
-        #study-file-input,
-        #youtube-link {
-            width: 100%; /* Adjusted width */
-            box-sizing: border-box;
-            padding: 8px;
-            margin-bottom: 10px;
+        .post {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .post-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .actions {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            background-color: #405de6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         #comment-input {
@@ -75,29 +95,9 @@
             margin-right: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-bottom: 10px;
         }
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 50%; /* Adjusted aspect ratio */
-            overflow: hidden;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        title {
-            text-align: center;
-        }
-
-        footer {
+        #social-media-icons {
             display: flex;
             justify-content: center;
             margin-top: 20px;
@@ -110,40 +110,14 @@
             cursor: pointer;
         }
 
-        .post,
-        .study,
-        .youtube-video {
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            overflow: hidden;
+        #youtube-container {
+            text-align: center;
         }
 
-        .post-image,
-        .study-image,
         .youtube-video iframe {
             width: 100%;
-            height: 200px; /* Adjusted size */
-            object-fit: cover;
-        }
-
-        .post-actions,
-        .study-actions,
-        .youtube-actions {
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .actions button {
-            background-color: #405de6;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
+            max-width: 600px;
+            height: 300px;
         }
     </style>
     <title>Simple Social Media</title>
@@ -166,10 +140,12 @@
         </section>
 
         <section id="upload-section">
-            <input type="file" id="post-file-input" accept="image/*">
-            <button onclick="uploadPicture()">Upload Picture</button>
-            <textarea id="comment-input" placeholder="Type your bio..."></textarea>
-            <button onclick="updateBio()">Update Bio</button>
+            <div id="upload-section">
+                <input type="file" id="post-file-input" accept="image/*">
+                <button onclick="uploadPicture()">Upload Picture</button>
+                <textarea id="comment-input" placeholder="Type your bio..."></textarea>
+                <button onclick="updateBio()">Update Bio</button>
+            </div>
         </section>
 
         <section id="biblical-studies-section">
@@ -189,10 +165,15 @@
         </section>
 
         <section id="youtube-section">
-            <h2>YouTube Video</h2>
-            <input type="text" id="youtube-link" placeholder="Paste YouTube link">
-            <button onclick="embedYouTubeVideo()">Embed Video</button>
-            <div id="youtube-container" class="video-container"></div>
+            <h2>YouTube Videos</h2>
+            <div id="youtube-container">
+                <!-- YouTube videos will be dynamically added here -->
+            </div>
+            <div id="youtube-input">
+                <label for="youtube-link">YouTube Link:</label>
+                <input type="text" id="youtube-link" placeholder="Enter YouTube link">
+                <button onclick="embedYouTubeVideo()">Embed Video</button>
+            </div>
         </section>
     </main>
 
@@ -206,297 +187,279 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            loginUser();
-            loadUserProfile();
-            loadPosts();
-            loadBiblicalStudies();
-        });
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        loginUser();
+        loadUserProfile();
+        loadPosts();
+        loadBiblicalStudies();
+        loadYouTubeVideos();
+    });
 
-        function uploadProfile() {
-            const usernameInput = document.getElementById('username');
-            const fileInput = document.getElementById('file-input');
-            const profilePicture = document.getElementById('profile-picture');
+    function uploadProfile() {
+        const usernameInput = document.getElementById('username');
+        const fileInput = document.getElementById('file-input');
+        const profilePicture = document.getElementById('profile-picture');
 
-            const username = usernameInput.value;
-            const file = fileInput.files[ 
-            if (username && file) {
-                // Display the uploaded profile picture and set the username
-                profilePicture.src = URL.createObjectURL(file);
-                document.getElementById('username-display').textContent = username;
-            } else {
-                alert('Please enter a username and select a file to upload.');
-            }
+        const username = usernameInput.value;
+        const file = fileInput.files[0];
+
+        if (username && file) {
+            // Display the uploaded profile picture and set the username
+            profilePicture.src = URL.createObjectURL(file);
+            document.getElementById('username-display').textContent = username;
+        } else {
+            alert('Please enter a username and select a file to upload.');
         }
+    }
 
-        function uploadPicture() {
-            const fileInput = document.getElementById('post-file-input');
-            const file = fileInput.files[0];
+    function uploadPicture() {
+        const fileInput = document.getElementById('post-file-input');
+        const file = fileInput.files[0];
 
-            if (file) {
-                const postSection = document.getElementById('post-section');
+        if (file) {
+            const postSection = document.getElementById('post-section');
 
-                // Display the uploaded picture as a new post
-                const postElement = createPostElement(file);
-                postSection.prepend(postElement);
-            } else {
-                alert('Please select a file to upload.');
-            }
+            // Display the uploaded picture as a new post
+            const postElement = createPostElement(file);
+            postSection.prepend(postElement);
+        } else {
+            alert('Please select a file to upload.');
         }
+    }
 
-        function updateBio() {
-            const newBio = document.getElementById('comment-input').value;
-            const bioElement = document.getElementById('bio');
-            bioElement.textContent = newBio;
+    function updateBio() {
+        const newBio = document.getElementById('comment-input').value;
+        const bioElement = document.getElementById('bio');
+        bioElement.textContent = newBio;
+    }
+
+    function uploadStudy() {
+        const fileInput = document.getElementById('study-file-input');
+        const file = fileInput.files[0];
+        const description = document.getElementById('study-description').value;
+
+        if (file) {
+            const studySection = document.getElementById('study-section');
+
+            // Display the uploaded study as a new entry
+            const studyElement = createStudyElement(file, description);
+            studySection.prepend(studyElement);
+        } else {
+            alert('Please select a file to upload.');
         }
+    }
 
-        function uploadStudy() {
-            const fileInput = document.getElementById('study-file-input');
-            const file = fileInput.files[0];
-            const description = document.getElementById('study-description').value;
+    function embedYouTubeVideo() {
+        const youtubeLink = document.getElementById('youtube-link').value;
 
-            if (file) {
-                const studySection = document.getElementById('study-section');
-
-                // Display the uploaded study as a new entry
-                const studyElement = createStudyElement(file, description);
-                studySection.prepend(studyElement);
-            } else {
-                alert('Please select a file to upload.');
-            }
-        }
-
-        function embedYouTubeVideo() {
-            const youtubeLink = document.getElementById('youtube-link').value;
-
-            if (youtubeLink) {
-                const youtubeContainer = document.getElementById('youtube-container');
-                const iframe = document.createElement('iframe');
-                iframe.src = `https://www.youtube.com/embed/${getYoutubeVideoId(youtubeLink)}`;
-                iframe.allow = 'autoplay; encrypted-media';
-                iframe.frameborder = '0';
-                iframe.allowfullscreen = true;
-
-                youtubeContainer.innerHTML = ''; // Clear previous content
-                youtubeContainer.appendChild(iframe);
-            } else {
-                alert('Please enter a valid YouTube link.');
-            }
-        }
-
-        function createPostElement(file) {
-            const postElement = document.createElement('div');
-            postElement.classList.add('post');
-
-            const postImage = document.createElement('img');
-            postImage.classList.add('post-image');
-            postImage.src = URL.createObjectURL(file);
-
-            const postActions = document.createElement('div');
-            postActions.classList.add('actions', 'post-actions');
-
-            const likeButton = document.createElement('button');
-            likeButton.textContent = 'Like';
-            likeButton.addEventListener('click', () => likePost(postElement));
-
-            const commentButton = document.createElement('button');
-            commentButton.textContent = 'Comment';
-            commentButton.addEventListener('click', () => commentPost(postElement));
-
-            postActions.appendChild(likeButton);
-            postActions.appendChild(commentButton);
-
-            postElement.appendChild(postImage);
-            postElement.appendChild(postActions);
-
-            return postElement;
-        }
-
-        function createStudyElement(file, description) {
-            const studyElement = document.createElement('div');
-            studyElement.classList.add('study');
-
-            const studyLink = document.createElement('a');
-            studyLink.href = URL.createObjectURL(file);
-            studyLink.textContent = 'Download Study';
-
-            const studyDescription = document.createElement('p');
-            studyDescription.textContent = description;
-
-            const studyActions = document.createElement('div');
-            studyActions.classList.add('actions', 'study-actions');
-
-            const likeButton = document.createElement('button');
-            likeButton.textContent = 'Like';
-            likeButton.addEventListener('click', () => likeStudy(studyElement));
-
-            const commentButton = document.createElement('button');
-            commentButton.textContent = 'Comment';
-            commentButton.addEventListener('click', () => commentStudy(studyElement));
-
-            studyActions.appendChild(likeButton);
-            studyActions.appendChild(commentButton);
-
-            studyElement.appendChild(studyLink);
-            studyElement.appendChild(studyDescription);
-            studyElement.appendChild(studyActions);
-
-            return studyElement;
-        }
-
-        function embedYouTubeElement(videoId) {
-            const youtubeElement = document.createElement('div');
-            youtubeElement.classList.add('youtube-video');
-
-            const youtubeActions = document.createElement('div');
-            youtubeActions.classList.add('actions', 'youtube-actions');
-
-            const likeButton = document.createElement('button');
-            likeButton.textContent = 'Like';
-            likeButton.addEventListener('click', () => likeYouTubeVideo(youtubeElement));
-
-            const commentButton = document.createElement('button');
-            commentButton.textContent = 'Comment';
-            commentButton.addEventListener('click', () => commentYouTubeVideo(youtubeElement));
-
-            youtubeActions.appendChild(likeButton);
-            youtubeActions.appendChild(commentButton);
-
-            const iframe = document.createElement('iframe');
-            iframe.src = `https://www.youtube.com/embed/${videoId}`;
-            iframe.allow = 'autoplay; encrypted-media';
-            iframe.frameborder = '0';
-            iframe.allowfullscreen = true;
-
-            youtubeElement.appendChild(iframe);
-            youtubeElement.appendChild(youtubeActions);
-
-            return youtubeElement;
-        }
-
-        function likePost(postElement) {
-            alert('Liked the post!');
-            // Implement actual like logic here
-        }
-
-        function likeStudy(studyElement) {
-            alert('Liked the study!');
-            // Implement actual like logic here
-        }
-
-        function likeYouTubeVideo(youtubeElement) {
-            alert('Liked the YouTube video!');
-            // Implement actual like logic here
-        }
-
-        function commentPost(postElement) {
-            const commentInput = prompt('Enter your comment:');
-            if (commentInput) {
-                const commentSection = document.createElement('div');
-                commentSection.textContent = `${getUsername()}: ${commentInput}`;
-                postElement.appendChild(commentSection);
-            }
-        }
-
-        function commentStudy(studyElement) {
-            const commentInput = prompt('Enter your comment:');
-            if (commentInput) {
-                const commentSection = document.createElement('div');
-                commentSection.textContent = `${getUsername()}: ${commentInput}`;
-                studyElement.appendChild(commentSection);
-            }
-        }
-
-        function commentYouTubeVideo(youtubeElement) {
-            const commentInput = prompt('Enter your comment:');
-            if (commentInput) {
-                const commentSection = document.createElement('div');
-                commentSection.textContent = `${getUsername()}: ${commentInput}`;
-                youtubeElement.appendChild(commentSection);
-            }
-        }
-
-        function getUsername() {
-            return document.getElementById('username-display').textContent;
-        }
-
-        function getYoutubeVideoId(url) {
-            const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-            const match = url.match(regex);
-            return match ? match[1] : null;
-        }
-
-        function displayRandomVerse() {
-            // Your existing Bible verses logic
-        }
-
-        function loginUser() {
-            const email = prompt('Enter your email:');
-            const password = prompt('Enter your password:');
-
-            if (email === 'diego@diego.com' && password === '101010') {
-                // Successful login
-                displayRandomVerse();
-            } else {
-                alert('Invalid credentials. Please try again.');
-            }
-        }
-
-        function loadUserProfile() {
-            // Placeholder for loading user profile data
-            const userData = {
-                                profilePicture: 'default-profile.jpg',
-                username: 'User123',
-                bio: 'This is my bio.',
-            };
-
-            const profilePicture = document.getElementById('profile-picture');
-            const usernameElement = document.getElementById('username-display');
-            const bioElement = document.getElementById('bio');
-
-            profilePicture.src = userData.profilePicture;
-            usernameElement.textContent = userData.username;
-            bioElement.textContent = userData.bio;
-        }
-
-        function loadPosts() {
-            // Placeholder for loading posts
-            // You can fetch posts from a server or use a database
-            // and dynamically create post elements in the #post-section
-        }
-
-        function loadBiblicalStudies() {
-            // Placeholder for loading biblical studies
-            // You can fetch studies from a server or use a database
-            // and dynamically create study elements in the #study-section
-        }
-
-        function loadYouTubeVideos() {
-            // Placeholder for loading YouTube videos
-            // You can fetch videos from a server or use a database
-            // and dynamically create YouTube video elements in the #youtube-section
-        }
-
-        function createYouTubeElement(videoId) {
+        if (youtubeLink) {
             const youtubeContainer = document.getElementById('youtube-container');
-            const youtubeElement = embedYouTubeElement(videoId);
-            youtubeContainer.innerHTML = ''; // Clear previous content
-            youtubeContainer.appendChild(youtubeElement);
-        }
-
-        function embedYouTubeVideo() {
-            const youtubeLink = document.getElementById('youtube-link').value;
             const videoId = getYoutubeVideoId(youtubeLink);
 
             if (videoId) {
-                createYouTubeElement(videoId);
+                const youtubeElement = embedYouTubeElement(videoId);
+                youtubeContainer.innerHTML = ''; // Clear previous content
+                youtubeContainer.appendChild(youtubeElement);
             } else {
-                alert('Please enter a valid YouTube link.');
+                alert('Invalid YouTube link. Please enter a valid link.');
             }
+        } else {
+            alert('Please enter a YouTube link.');
         }
-    </script>
+    }
+
+    function createPostElement(file) {
+        const postElement = document.createElement('div');
+        postElement.classList.add('post');
+
+        const postImage = document.createElement('img');
+        postImage.classList.add('post-image');
+        postImage.src = URL.createObjectURL(file);
+
+        const postActions = document.createElement('div');
+        postActions.classList.add('actions', 'post-actions');
+
+        const likeButton = document.createElement('button');
+        likeButton.textContent = 'Like';
+        likeButton.addEventListener('click', () => likePost(postElement));
+
+        const commentButton = document.createElement('button');
+        commentButton.textContent = 'Comment';
+        commentButton.addEventListener('click', () => commentPost(postElement));
+
+        postActions.appendChild(likeButton);
+        postActions.appendChild(commentButton);
+
+        postElement.appendChild(postImage);
+        postElement.appendChild(postActions);
+
+        return postElement;
+    }
+
+    function createStudyElement(file, description) {
+        const studyElement = document.createElement('div');
+        studyElement.classList.add('study');
+
+        const studyLink = document.createElement('a');
+        studyLink.href = URL.createObjectURL(file);
+        studyLink.textContent = 'Download Study';
+
+        const studyDescription = document.createElement('p');
+        studyDescription.textContent = description;
+
+        const studyActions = document.createElement('div');
+        studyActions.classList.add('actions', 'study-actions');
+
+        const likeButton = document.createElement('button');
+        likeButton.textContent = 'Like';
+        likeButton.addEventListener('click', () => likeStudy(studyElement));
+
+        const commentButton = document.createElement('button');
+        commentButton.textContent = 'Comment';
+        commentButton.addEventListener('click', () => commentStudy(studyElement));
+
+        studyActions.appendChild(likeButton);
+        studyActions.appendChild(commentButton);
+
+        studyElement.appendChild(studyLink);
+        studyElement.appendChild(studyDescription);
+        studyElement.appendChild(studyActions);
+
+        return studyElement;
+    }
+
+    function embedYouTubeElement(videoId) {
+        const youtubeElement = document.createElement('div');
+        youtubeElement.classList.add('youtube-video');
+
+        const youtubeActions = document.createElement('div');
+        youtubeActions.classList.add('actions', 'youtube-actions');
+
+        const likeButton = document.createElement('button');
+        likeButton.textContent = 'Like';
+        likeButton.addEventListener('click', () => likeYouTubeVideo(youtubeElement));
+
+        const commentButton = document.createElement('button');
+        commentButton.textContent = 'Comment';
+        commentButton.addEventListener('click', () => commentYouTubeVideo(youtubeElement));
+
+        youtubeActions.appendChild(likeButton);
+        youtubeActions.appendChild(commentButton);
+
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+        iframe.allow = 'autoplay; encrypted-media';
+        iframe.frameborder = '0';
+        iframe.allowfullscreen = true;
+
+        youtubeElement.appendChild(iframe);
+        youtubeElement.appendChild(youtubeActions);
+
+        return youtubeElement;
+    }
+
+    function likePost(postElement) {
+        alert('Liked the post!');
+        // Implement actual like logic here
+    }
+
+    function likeStudy(studyElement) {
+        alert('Liked the study!');
+        // Implement actual like logic here
+    }
+    function likeYouTubeVideo(youtubeElement) {
+        alert('Liked the YouTube video!');
+        // Implement actual like logic here
+    }
+
+    function commentPost(postElement) {
+        const commentInput = prompt('Enter your comment:');
+        if (commentInput) {
+            const commentSection = document.createElement('div');
+            commentSection.textContent = `${getUsername()}: ${commentInput}`;
+            postElement.appendChild(commentSection);
+        }
+    }
+
+    function commentStudy(studyElement) {
+        const commentInput = prompt('Enter your comment:');
+        if (commentInput) {
+            const commentSection = document.createElement('div');
+            commentSection.textContent = `${getUsername()}: ${commentInput}`;
+            studyElement.appendChild(commentSection);
+        }
+    }
+
+    function commentYouTubeVideo(youtubeElement) {
+        const commentInput = prompt('Enter your comment:');
+        if (commentInput) {
+            const commentSection = document.createElement('div');
+            commentSection.textContent = `${getUsername()}: ${commentInput}`;
+            youtubeElement.appendChild(commentSection);
+        }
+    }
+
+    function getUsername() {
+        return document.getElementById('username-display').textContent;
+    }
+
+    function getYoutubeVideoId(url) {
+        const regex = /^(?:(?:https?:)?\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match = url.match(regex);
+        return match ? match[1] : null;
+    }
+
+    function loginUser() {
+        const email = prompt('Enter your email:');
+        const password = prompt('Enter your password:');
+
+        if (email === 'diego@diego.com' && password === '101010') {
+            // Successful login
+            displayRandomVerse();
+        } else {
+            alert('Invalid credentials. Please try again.');
+        }
+    }
+
+    function loadUserProfile() {
+        // Placeholder for loading user profile data
+        const userData = {
+            profilePicture: 'default-profile.jpg',
+            username: 'User123',
+            bio: 'This is my bio.',
+        };
+
+        const profilePicture = document.getElementById('profile-picture');
+        const usernameElement = document.getElementById('username-display');
+        const bioElement = document.getElementById('bio');
+
+        profilePicture.src = userData.profilePicture;
+        usernameElement.textContent = userData.username;
+        bioElement.textContent = userData.bio;
+    }
+
+    function loadPosts() {
+        // Placeholder for loading posts
+        // You can fetch posts from a server or use a database
+        // and dynamically create post elements in the #post-section
+    }
+
+    function loadBiblicalStudies() {
+        // Placeholder for loading biblical studies
+        // You can fetch studies from a server or use a database
+        // and dynamically create study elements in the #study-section
+    }
+
+    function loadYouTubeVideos() {
+        // Placeholder for loading YouTube videos
+        // You can fetch videos from a server or use a database
+        // and dynamically create YouTube video elements in the #youtube-section
+    }
+
+    function displayRandomVerse() {
+        // Your existing Bible verses logic
+    }
+</script>
 </body>
 </html>
-
-
