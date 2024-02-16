@@ -174,7 +174,6 @@
     </main>
 
     <footer>
-        <!-- Your existing social media icons -->
         <div id="social-media-icons">
             <i class="fab fa-facebook"></i>
             <i class="fab fa-twitter"></i>
@@ -184,7 +183,6 @@
     </footer>
 
     <script>
-        // Event listener when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', function () {
             loginUser();
             loadUserProfile();
@@ -193,7 +191,6 @@
             loadYouTubeVideos();
         });
 
-        // Function to upload user profile information
         function uploadProfile() {
             const usernameInput = document.getElementById('username');
             const fileInput = document.getElementById('file-input');
@@ -203,7 +200,6 @@
             const file = fileInput.files[0];
 
             if (username && file) {
-                // Display the uploaded profile picture and set the username
                 profilePicture.src = URL.createObjectURL(file);
                 document.getElementById('username-display').textContent = username;
             } else {
@@ -211,15 +207,12 @@
             }
         }
 
-        // Function to upload a picture as a post
         function uploadPicture() {
             const fileInput = document.getElementById('post-file-input');
             const file = fileInput.files[0];
 
             if (file) {
                 const postSection = document.getElementById('post-section');
-
-                // Display the uploaded picture as a new post
                 const postElement = createPostElement(file);
                 postSection.prepend(postElement);
             } else {
@@ -227,14 +220,12 @@
             }
         }
 
-        // Function to update user bio
         function updateBio() {
             const newBio = document.getElementById('comment-input').value;
             const bioElement = document.getElementById('bio');
             bioElement.textContent = newBio;
         }
 
-        // Function to upload a study
         function uploadStudy() {
             const fileInput = document.getElementById('study-file-input');
             const file = fileInput.files[0];
@@ -242,8 +233,6 @@
 
             if (file) {
                 const studySection = document.getElementById('study-section');
-
-                // Display the uploaded study as a new entry
                 const studyElement = createStudyElement(file, description);
                 studySection.prepend(studyElement);
             } else {
@@ -251,7 +240,6 @@
             }
         }
 
-        // Function to embed a YouTube video
         function embedYouTubeVideo() {
             const youtubeLink = document.getElementById('youtube-link').value;
 
@@ -261,7 +249,7 @@
 
                 if (videoId) {
                     const youtubeElement = embedYouTubeElement(videoId);
-                    youtubeContainer.innerHTML = ''; // Clear previous content
+                    youtubeContainer.innerHTML = '';
                     youtubeContainer.appendChild(youtubeElement);
                 } else {
                     alert('Invalid YouTube link. Please enter a valid link.');
@@ -271,7 +259,6 @@
             }
         }
 
-        // Function to create a post element
         function createPostElement(file) {
             const postElement = document.createElement('div');
             postElement.classList.add('post');
@@ -300,14 +287,11 @@
             return postElement;
         }
 
-        // Function to like a post
         function likePost(postElement) {
-            // Increment the like count
             const likeCount = document.getElementById('like-count');
             likeCount.textContent = parseInt(likeCount.textContent) + 1;
         }
 
-        // Function to comment on a post
         function commentPost(postElement) {
             const commentInput = prompt('Enter your comment:');
             if (commentInput) {
@@ -317,7 +301,6 @@
             }
         }
 
-        // Function to create a study element
         function createStudyElement(file, description) {
             const studyElement = document.createElement('div');
             studyElement.classList.add('study');
@@ -328,7 +311,6 @@
 
             const studyDescription = document.createElement('p');
             studyDescription.textContent = description;
-
             const studyActions = document.createElement('div');
             studyActions.classList.add('actions', 'study-actions');
 
@@ -350,14 +332,11 @@
             return studyElement;
         }
 
-        // Function to like a study
         function likeStudy(studyElement) {
-            // Increment the like count
             const likeCount = document.getElementById('like-count');
             likeCount.textContent = parseInt(likeCount.textContent) + 1;
         }
 
-        // Function to embed a YouTube video element
         function embedYouTubeElement(videoId) {
             const youtubeElement = document.createElement('div');
             youtubeElement.classList.add('youtube-video');
@@ -388,14 +367,11 @@
             return youtubeElement;
         }
 
-        // Function to like a YouTube video
         function likeYouTubeVideo(youtubeElement) {
-            // Increment the like count
             const likeCount = document.getElementById('like-count');
             likeCount.textContent = parseInt(likeCount.textContent) + 1;
         }
 
-        // Function to comment on a study
         function commentStudy(studyElement) {
             const commentInput = prompt('Enter your comment:');
             if (commentInput) {
@@ -405,7 +381,6 @@
             }
         }
 
-        // Function to comment on a YouTube video
         function commentYouTubeVideo(youtubeElement) {
             const commentInput = prompt('Enter your comment:');
             if (commentInput) {
@@ -415,34 +390,28 @@
             }
         }
 
-        // Function to get the current username
         function getUsername() {
             return document.getElementById('username-display').textContent;
         }
 
-        // Function to extract YouTube video ID from the link
         function getYoutubeVideoId(url) {
             const regex = /^(?:(?:https?:)?\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
             const match = url.match(regex);
             return match ? match[1] : null;
         }
 
-        // Function to simulate a user login
         function loginUser() {
             const email = prompt('Enter your email:');
             const password = prompt('Enter your password:');
 
             if (email === 'diego@diego.com' && password === '101010') {
-                // Successful login
                 displayRandomVerse();
             } else {
                 alert('Invalid credentials. Please try again.');
             }
         }
 
-        // Function to load user profile data
         function loadUserProfile() {
-            // Placeholder for loading user profile data
             const userData = {
                 profilePicture: 'default-profile.jpg',
                 username: 'Username',
@@ -458,32 +427,30 @@
             bioElement.textContent = userData.bio;
         }
 
-        // Placeholder function to load posts (replace with actual implementation)
         function loadPosts() {
             // Placeholder for loading posts
-            // You can fetch posts from a server or use a database
-            // and dynamically create post elements in the #post-section
+            // Fetch posts from a server or use a database
+            // Create and append post elements to the #post-section
         }
 
-        // Placeholder function to load biblical studies (replace with actual implementation)
         function loadBiblicalStudies() {
             // Placeholder for loading biblical studies
-            // You can fetch studies from a server or use a database
-            // and dynamically create study elements in the #study-section
+            // Fetch studies from a server or use a database
+            // Create and append study elements to the #study-section
         }
 
-        // Placeholder function to load YouTube videos (replace with actual implementation)
         function loadYouTubeVideos() {
             // Placeholder for loading YouTube videos
-            // You can fetch videos from a server or use a database
-            // and dynamically create YouTube video elements in the #youtube-section
+            // Fetch videos from a server or use a database
+            // Create and append YouTube video elements to the #youtube-section
         }
 
-        // Placeholder function to display a random Bible verse (replace with actual implementation)
         function displayRandomVerse() {
-            // Your existing Bible verses logic
+            // Placeholder for displaying a random Bible verse
+            // You can fetch and display a verse from a Bible API or use your own data
         }
     </script>
 </body>
 </html>
+
 
