@@ -136,6 +136,8 @@
                 <button onclick="uploadProfile()">Upload Profile</button>
                 <h2 id="username-display"></h2>
                 <p id="bio"></p>
+                 <textarea id="comment-input" placeholder="Type your bio..."></textarea>
+                <button onclick="updateBio()">Update Bio</button>
             </div>
         </section>
 
@@ -144,8 +146,6 @@
             <div id="upload-section">
                 <input type="file" id="post-file-input" accept="image/*">
                 <button onclick="uploadPicture()">Upload Picture</button>
-                <textarea id="comment-input" placeholder="Type your bio..."></textarea>
-                <button onclick="updateBio()">Update Bio</button>
             </div>
         </section>
 
@@ -159,11 +159,6 @@
                 <button onclick="uploadStudy()">Upload Study</button>
                 <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
             </div>
-        </section>
-
-        <section id="post-section">
-            <h2>Upload Picture Posts</h2>
-            <!-- Posts will be dynamically added here -->
         </section>
 
         <section id="youtube-section">
