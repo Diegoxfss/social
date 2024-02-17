@@ -55,6 +55,15 @@ main {
     margin-bottom: 20px;
 }
 
+#logo {
+    width: 50px; /* Adjust the size of your logo */
+    height: 50px;
+    background: url('path_to_your_logo') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
 #user-profile {
     text-align: center;
 }
@@ -64,16 +73,18 @@ main {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 0, 0, 0.5); /* Neon red shadow */
     margin-bottom: 10px;
 }
 
 #username-display {
     margin: 10px 0;
+    text-shadow: 2px 2px 4px #000000; /* Text shadow */
 }
 
 #bio {
     margin: 10px 0;
+    text-shadow: 2px 2px 4px #000000; /* Text shadow */
 }
 
 #comment-input {
@@ -82,11 +93,12 @@ main {
     margin-bottom: 10px;
     border: 1px solid #466576; /* Darker border color */
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Neon red shadow */
 }
 
 .post {
     background-color: #283b4c; /* Darker post background color */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -96,6 +108,7 @@ main {
     width: 100%;
     max-height: 400px;
     object-fit: cover;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.2); /* Neon red shadow */
 }
 
 .actions {
@@ -103,6 +116,9 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgba(255, 0, 0, 0.2); /* Neon red background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
 button {
@@ -112,6 +128,7 @@ button {
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 0, 0, 0.5); /* Neon red shadow */
 }
 
 #social-media-icons {
@@ -125,6 +142,7 @@ button {
     margin: 0 10px;
     color: #1da1f2; /* Twitter-like blue icon color */
     cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Neon red shadow */
 }
 
 #youtube-container {
@@ -135,11 +153,13 @@ button {
     width: 100%;
     max-width: 600px;
     height: 300px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.2); /* Neon red shadow */
 }
 
 section {
     margin-top: 40px;
 }
+
 
 
     </style>
