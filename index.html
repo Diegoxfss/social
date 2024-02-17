@@ -1,162 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0; /* Lighter background color */
-    color: #333; /* Text color */
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Lighter background color */
+            color: #333; /* Text color */
+        }
 
-header {
-    background-color: #394240; /* Darker header color */
-    color: white;
-    text-align: center;
-    padding: 1em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+        header {
+            background-color: #394240; /* Darker header color */
+            color: white;
+            text-align: center;
+            padding: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-nav {
-    background: linear-gradient(to right, #394240, #293137); /* Gradient for navbar */
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow */
-}
+        nav {
+            background: linear-gradient(to right, #394240, #293137); /* Gradient for navbar */
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+        }
 
-nav a {
-    float: left;
-    display: block;
-    color: #ccc; /* Lighter text color */
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    transition: box-shadow 0.3s ease; /* Smooth transition for box-shadow */
-}
+        nav a {
+            float: left;
+            display: block;
+            color: #ccc; /* Lighter text color */
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: box-shadow 0.3s ease; /* Smooth transition for box-shadow */
+        }
 
-nav a:hover {
-    background-color: #4d5c65; /* Darker hover color */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
-    color: white;
-}
+        nav a:hover {
+            background-color: #4d5c65; /* Darker hover color */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
+            color: white;
+        }
 
-main {
-    max-width: 800px;
-    margin: 20px auto;
-}
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+        }
 
-#profile-section {
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
+        #profile-section {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
 
-#user-profile {
-    text-align: center;
-}
+        #user-profile {
+            text-align: center;
+        }
 
-#profile-picture {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px; /* Adjust the margin as needed */
-}
+        #profile-picture {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px; /* Adjust the margin as needed */
+        }
 
-#username-display {
-    margin: 10px 0;
-}
+        #username-display {
+            margin: 10px 0;
+        }
 
-#bio {
-    margin: 10px 0;
-}
+        #bio {
+            margin: 10px 0;
+            max-height: 150px;
+            overflow: auto;
+        }
 
-#comment-input {
-    width: calc(100% - 15px);
-    padding: 8px;
-    margin-bottom: 10px; /* Adjust the margin as needed */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+        #comment-input {
+            width: calc(100% - 15px);
+            padding: 8px;
+            margin-bottom: 10px; /* Adjust the margin as needed */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-.post {
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
+        .post {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
 
-.post-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-}
+        .post-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
 
-.actions {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .actions {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-button {
-    background-color: #777; /* Gray button color */
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly lighter shadow */
-}
+        button {
+            background-color: #777; /* Gray button color */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly lighter shadow */
+        }
 
-#comment-input {
-    width: calc(100% - 15px);
-    padding: 8px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+        #social-media-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-#social-media-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
+        #social-media-icons i {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #4d5c65; /* Darker icon color */
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Lighter shadow */
+        }
 
-#social-media-icons i {
-    font-size: 24px;
-    margin: 0 10px;
-    color: #4d5c65; /* Darker icon color */
-    cursor: pointer;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Lighter shadow */
-}
+        #youtube-container {
+            text-align: center;
+        }
 
-#youtube-container {
-    text-align: center;
-}
+        .youtube-video iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+        }
 
-.youtube-video iframe {
-    width: 100%;
-    max-width: 600px;
-    height: 300px;
-}
-
-section {
-    margin-top: 40px;
-}
-
+        section {
+            margin-top: 40px;
+        }
     </style>
     <title>X-fo</title>
 </head>
+
 <body>
     <header>
         <h1>X-fo</h1>
@@ -169,33 +164,23 @@ section {
     </nav>
 
     <main>
+        <!-- Inside the #profile-section div in your HTML -->
+        <section id="profile-section">
+            <div id="user-profile">
+                <label for="username">Choose Your Name:</label>
+                <input type="text" id="username" placeholder="Your Name">
+                <img id="profile-picture" src="" alt="Profile Picture">
+                <input type="file" id="file-input" accept="image/*">
+                <button onclick="uploadProfile()">Upload Profile</button>
+                <h2 id="username-display"></h2>
+                <p id="bio"></p>
+                <div id="profile-buttons">
+                    <textarea id="comment-input" placeholder="Type your bio..."></textarea>
+                    <button onclick="updateBio()">Update Bio</button>
+                </div>
+            </div>
+        </section>
 
-<!-- Inside the #profile-section div in your HTML -->
-<section id="profile-section">
-    <div id="user-profile">
-        <label for="username">Choose Your Name:</label>
-        <input type="text" id="username" placeholder="Your Name">
-        <img id="profile-picture" src="" alt="Profile Picture">
-        <input type="file" id="file-input" accept="image/*">
-        <button onclick="uploadProfile()">Upload Profile</button>
-        <h2 id="username-display"></h2>
-        <p id="bio"></p>
-        <div id="profile-buttons">
-            <textarea id="comment-input" placeholder="Type your bio..."></textarea>
-            <button onclick="updateBio()">Update Bio</button>
-        </div>
-    </div>
-</section>
-
-
-       <footer>
-        <div id="social-media-icons">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-linkedin"></i>
-        </div>
-    </footer>
         <section id="upload-section">
             <h2>Upload Picture</h2>
             <div id="post-section">
@@ -216,8 +201,10 @@ section {
                 <input type="file" id="study-file-input" accept=".pdf, .doc, .docx">
                 <button onclick="uploadStudy()">Upload Study</button>
                 <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
+                </div>
             </div>
         </section>
+
         <section id="youtube-section">
             <h2>YouTube Videos</h2>
             <div id="youtube-container">
@@ -230,12 +217,13 @@ section {
             </div>
         </section>
     </main>
+
     <br>
-    <br>  
+    <br>
     <br>
     <footer>
         <div id="social-media-icons">
-      © 2024 Diego.xfss.  I'm not responsible for the content of external sites. Read about our approach to external linking.
+            © 2024 Diego.xfss. I'm not responsible for the content of external sites. Read about our approach to external linking.
         </div>
     </footer>
 
@@ -352,163 +340,165 @@ section {
             likeCount.textContent = parseInt(likeCount.textContent) + 1;
         }
 
-function commentPost(postElement) {
-    const commentInput = prompt('Enter your comment:');
-    if (commentInput) {
-        const commentSection = document.createElement('div');
-        commentSection.textContent = `${getUsername()}: ${commentInput}`;
-        postElement.appendChild(commentSection);
-    }
-}
+        function commentPost(postElement) {
+            const commentInput = prompt('Enter your comment:');
+            if (commentInput) {
+                const commentSection = document.createElement('div');
+                commentSection.textContent = `${getUsername()}: ${commentInput}`;
+                postElement.appendChild(commentSection);
+            }
+        }
 
-function createStudyElement(file, description) {
-    const studyElement = document.createElement('div');
-    studyElement.classList.add('study');
+        function createStudyElement(file, description) {
+            const studyElement = document.createElement('div');
+            studyElement.classList.add('study');
 
-    const studyLink = document.createElement('a');
-    studyLink.href = URL.createObjectURL(file);
-    studyLink.textContent = 'Download Study';
+            const studyLink = document.createElement('a');
+            studyLink.href = URL.createObjectURL(file);
+            studyLink.textContent = 'Download Study';
 
-    const studyDescription = document.createElement('p');
-    studyDescription.textContent = description;
-    const studyActions = document.createElement('div');
-    studyActions.classList.add('actions', 'study-actions');
+            const studyDescription = document.createElement('p');
+            studyDescription.textContent = description;
+            const studyActions = document.createElement('div');
+            studyActions.classList.add('actions', 'study-actions');
 
-    const likeButton = document.createElement('button');
-    likeButton.textContent = 'Like';
-    likeButton.addEventListener('click', () => likeStudy(studyElement));
+            const likeButton = document.createElement('button');
+            likeButton.textContent = 'Like';
+            likeButton.addEventListener('click', () => likeStudy(studyElement));
 
-    const commentButton = document.createElement('button');
-    commentButton.textContent = 'Comment';
-    commentButton.addEventListener('click', () => commentStudy(studyElement));
+            const commentButton = document.createElement('button');
+            commentButton.textContent = 'Comment';
+            commentButton.addEventListener('click', () => commentStudy(studyElement));
 
-    studyActions.appendChild(likeButton);
-    studyActions.appendChild(commentButton);
+            studyActions.appendChild(likeButton);
+            studyActions.appendChild(commentButton);
 
-    studyElement.appendChild(studyLink);
-    studyElement.appendChild(studyDescription);
-    studyElement.appendChild(studyActions);
+            studyElement.appendChild(studyLink);
+            studyElement.appendChild(studyDescription);
+            studyElement.appendChild(studyActions);
 
-    return studyElement;
-}
+            return studyElement;
+        }
 
-function likeStudy(studyElement) {
-    const likeCount = document.getElementById('like-count');
-    likeCount.textContent = parseInt(likeCount.textContent) + 1;
-}
+        function likeStudy(studyElement) {
+            const likeCount = document.getElementById('like-count');
+            likeCount.textContent = parseInt(likeCount.textContent) + 1;
+        }
 
-function embedYouTubeElement(videoId) {
-    const youtubeElement = document.createElement('div');
-    youtubeElement.classList.add('youtube-video');
+        function embedYouTubeElement(videoId) {
+            const youtubeElement = document.createElement('div');
+            youtubeElement.classList.add('youtube-video');
 
-    const youtubeActions = document.createElement('div');
-    youtubeActions.classList.add('actions', 'youtube-actions');
+            const youtubeActions = document.createElement('div');
+            youtubeActions.classList.add('actions', 'youtube-actions');
 
-    const likeButton = document.createElement('button');
-    likeButton.textContent = 'Like';
-    likeButton.addEventListener('click', () => likeYouTubeVideo(youtubeElement));
+            const likeButton = document.createElement('button');
+            likeButton.textContent = 'Like';
+            likeButton.addEventListener('click', () => likeYouTubeVideo(youtubeElement));
 
-    const commentButton = document.createElement('button');
-    commentButton.textContent = 'Comment';
-    commentButton.addEventListener('click', () => commentYouTubeVideo(youtubeElement));
+            const commentButton = document.createElement('button');
+            commentButton.textContent = 'Comment';
+            commentButton.addEventListener('click', () => commentYouTubeVideo(youtubeElement));
 
-    youtubeActions.appendChild(likeButton);
-    youtubeActions.appendChild(commentButton);
+            youtubeActions.appendChild(likeButton);
+            youtubeActions.appendChild(commentButton);
 
-    const iframe = document.createElement('iframe');
-    iframe.src = `https://www.youtube.com/embed/${videoId}`;
-    iframe.allow = 'autoplay; encrypted-media';
-    iframe.frameborder = '0';
-    iframe.allowfullscreen = true;
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+            iframe.allow = 'autoplay; encrypted-media';
+            iframe.frameborder = '0';
+            iframe.allowfullscreen = true;
 
-    youtubeElement.appendChild(iframe);
-    youtubeElement.appendChild(youtubeActions);
+            youtubeElement.appendChild(iframe);
+            youtubeElement.appendChild(youtubeActions);
 
-    return youtubeElement;
-}
+            return youtubeElement;
+        }
 
-function likeYouTubeVideo(youtubeElement) {
-    const likeCount = document.getElementById('like-count');
-    likeCount.textContent = parseInt(likeCount.textContent) + 1;
-}
+        function likeYouTubeVideo(youtubeElement) {
+            const likeCount = document.getElementById('like-count');
+            likeCount.textContent = parseInt(likeCount.textContent) + 1;
+        }
 
-function commentStudy(studyElement) {
-    const commentInput = prompt('Enter your comment:');
-    if (commentInput) {
-        const commentSection = document.createElement('div');
-        commentSection.textContent = `${getUsername()}: ${commentInput}`;
-        studyElement.appendChild(commentSection);
-    }
-}
+        function commentStudy(studyElement) {
+            const commentInput = prompt('Enter your comment:');
+            if (commentInput) {
+                const commentSection = document.createElement('div');
+                commentSection.textContent = `${getUsername()}: ${commentInput}`;
+                studyElement.appendChild(commentSection);
+            }
+        }
 
-function commentYouTubeVideo(youtubeElement) {
-    const commentInput = prompt('Enter your comment:');
-    if (commentInput) {
-        const commentSection = document.createElement('div');
-        commentSection.textContent = `${getUsername()}: ${commentInput}`;
-        youtubeElement.appendChild(commentSection);
-    }
-}
+        function commentYouTubeVideo(youtubeElement) {
+            const commentInput = prompt('Enter your comment:');
+            if (commentInput)
+                const commentSection = document.createElement('div');
+                commentSection.textContent = `${getUsername()}: ${commentInput}`;
+                youtubeElement.appendChild(commentSection);
+            }
+        }
 
-function getUsername() {
-    return document.getElementById('username-display').textContent;
-}
+        function getUsername() {
+            return document.getElementById('username-display').textContent;
+        }
 
-function getYoutubeVideoId(url) {
-    const regex = /^(?:(?:https?:)?\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    const match = url.match(regex);
-    return match ? match[1] : null;
-}
+        function getYoutubeVideoId(url) {
+            const regex = /^(?:(?:https?:)?\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
 
-function loginUser() {
-    const email = prompt('Enter your email:');
-    const password = prompt('Enter your password:');
+        function loginUser() {
+            const email = prompt('Enter your email:');
+            const password = prompt('Enter your password:');
 
-    if (email === 'diego@diego.com' && password === '101010') {
-        displayRandomVerse();
-    } else {
-        alert('Invalid credentials. Please try again.');
-    }
-}
+            if (email === 'diego@diego.com' && password === '101010') {
+                displayRandomVerse();
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        }
 
-function loadUserProfile() {
-    const userData = {
-        profilePicture: 'default-profile.jpg',
-        username: 'Username',
-        bio: 'This is my bio.',
-    };
+        function loadUserProfile() {
+            const userData = {
+                profilePicture: 'default-profile.jpg',
+                username: 'Username',
+                bio: 'This is my bio. It might be a bit long to test the overflow behavior.',
+            };
 
-    const profilePicture = document.getElementById('profile-picture');
-    const usernameElement = document.getElementById('username-display');
-    const bioElement = document.getElementById('bio');
+            const profilePicture = document.getElementById('profile-picture');
+            const usernameElement = document.getElementById('username-display');
+            const bioElement = document.getElementById('bio');
 
-    profilePicture.src = userData.profilePicture;
-    usernameElement.textContent = userData.username;
-    bioElement.textContent = userData.bio;
-}
+            profilePicture.src = userData.profilePicture;
+            usernameElement.textContent = userData.username;
+            bioElement.textContent = userData.bio;
+        }
 
-function loadPosts() {
-    // Placeholder for loading posts
-    // Fetch posts from a server or use a database
-    // Create and append post elements to the #post-section
-}
+        function loadPosts() {
+            // Placeholder for loading posts
+            // Fetch posts from a server or use a database
+            // Create and append post elements to the #post-section
+        }
 
-function loadBiblicalStudies() {
-    // Placeholder for loading biblical studies
-    // Fetch studies from a server or use a database
-    // Create and append study elements to the #study-section
-}
+        function loadBiblicalStudies() {
+            // Placeholder for loading biblical studies
+            // Fetch studies from a server or use a database
+            // Create and append study elements to the #study-section
+        }
 
-function loadYouTubeVideos() {
-    // Placeholder for loading YouTube videos
-    // Fetch videos from a server or use a database
-    // Create and append YouTube video elements to the #youtube-section
-}
+        function loadYouTubeVideos() {
+            // Placeholder for loading YouTube videos
+            // Fetch videos from a server or use a database
+            // Create and append YouTube video elements to the #youtube-section
+        }
 
-function displayRandomVerse() {
-    // Placeholder for displaying a random Bible verse
-    // You can fetch and display a verse from a Bible API or use your own data
-}
-</script>
+        function displayRandomVerse() {
+            // Placeholder for displaying a random Bible verse
+            // You can fetch and display a verse from a Bible API or use your own data
+        }
+    </script>
 </body>
+
 </html>
+
