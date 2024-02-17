@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-body {
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
@@ -42,6 +42,23 @@ body {
         main {
             max-width: 800px;
             margin: 20px auto;
+            display: flex; /* Adjusted to display items side by side */
+        }
+
+        #user-info-panel {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #405de6;
+            color: white;
+        }
+
+        #navbar-profile-picture {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            margin-right: 10px;
         }
 
         #profile-section {
@@ -52,6 +69,8 @@ body {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin-bottom: 20px;
+            flex-grow: 1; /* Added to allow it to grow and take the remaining space */
+            margin-left: 20px; /* Added space between user info panel and profile section */
         }
 
         #user-profile {
@@ -130,7 +149,8 @@ body {
             max-width: 600px;
             height: 300px;
         }
-         section {
+
+        section {
             margin-top: 40px;
         }
     </style>
@@ -148,6 +168,11 @@ body {
     </nav>
 
     <main>
+        <div id="user-info-panel">
+            <img id="navbar-profile-picture" src="" alt="Profile Picture">
+            <h4 id="navbar-username-display"></h4>
+        </div>
+        
         <section id="profile-section">
             <div id="user-profile">
                 <label for="username">Choose Your Name:</label>
@@ -206,10 +231,14 @@ body {
     <br>
     <br>  
     <br>
-    <footer>
+     <footer>
         <div id="social-media-icons">
-      © 2024 Diego.xfss.  I'm not responsible for the content of external sites. Read about our approach to external linking.
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin"></i>
         </div>
+        <p>&copy; 2024 Diego.xfss. I'm not responsible for the content of external sites. Read about our approach to external linking.</p>
     </footer>
 
     <script>
@@ -220,7 +249,7 @@ body {
             loadBiblicalStudies();
             loadYouTubeVideos();
         });
-
+        
         function uploadProfile() {
             const usernameInput = document.getElementById('username');
             const fileInput = document.getElementById('file-input');
