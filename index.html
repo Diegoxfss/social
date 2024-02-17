@@ -54,22 +54,34 @@ body {
             margin-bottom: 20px;
         }
 
-        #user-profile {
-            text-align: center;
-        }
+      #user-profile {
+    text-align: center;
+}
 
-        #profile-picture {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+#profile-picture {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; /* Adjust the margin as needed */
+}
 
-        #bio {
-            margin-top: 10px;
-        }
+#username-display {
+    margin: 10px 0;
+}
 
+#bio {
+    margin: 10px 0;
+}
+
+#comment-input {
+    width: calc(100% - 15px);
+    padding: 8px;
+    margin-bottom: 10px; /* Adjust the margin as needed */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
         .post {
             background-color: white;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -148,19 +160,21 @@ body {
     </nav>
 
     <main>
-        <section id="profile-section">
-            <div id="user-profile">
-                <label for="username">Choose Your Name:</label>
-                <input type="text" id="username" placeholder="Your Name">
-                <img id="profile-picture" src="" alt="Profile Picture">
-                <input type="file" id="file-input" accept="image/*">
-                <button onclick="uploadProfile()">Upload Profile</button>
-                <h2 id="username-display"></h2>
-                <p id="bio"></p>
-                <textarea id="comment-input" placeholder="Type your bio..."></textarea>
-                <button onclick="updateBio()">Update Bio</button>
-            </div>
-        </section>
+
+ <section id="profile-section">
+    <div id="user-profile">
+        <label for="username">Choose Your Name:</label>
+        <input type="text" id="username" placeholder="Your Name">
+        <img id="profile-picture" src="" alt="Profile Picture">
+        <input type="file" id="file-input" accept="image/*">
+        <button onclick="uploadProfile()">Upload Profile</button>
+        <h2 id="username-display"></h2>
+        <p id="bio"></p>
+        <textarea id="comment-input" placeholder="Type your bio..."></textarea>
+        <button onclick="updateBio()">Update Bio</button>
+    </div>
+</section>
+
        <footer>
         <div id="social-media-icons">
             <i class="fab fa-facebook"></i>
