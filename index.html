@@ -139,6 +139,18 @@
         section {
             margin-top: 40px;
         }
+          #file-input {
+            display: none; /* Hide the file input initially */
+        }
+
+        #profile-picture-upload-btn {
+            background-color: #405de6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
     <title>X-fo</title>
 </head>
@@ -153,8 +165,10 @@
         <a href="#youtube-section">YouTube</a>
     </nav>
 
-    <main>
+   <main>
         <section id="profile-section">
+            <label for="file-input" id="profile-picture-upload-btn">Upload Profile Picture</label>
+            <input type="file" id="file-input" accept="image/*" onchange="previewProfilePicture()">
             <img id="profile-picture" src="" alt="Profile Picture">
             <div id="user-profile">
                 <input type="text" id="username-input" placeholder="Your Name">
@@ -227,8 +241,23 @@
             loadYouTubeVideos();
         });
 
+          function previewProfilePicture() {
+            const fileInput = document.getElementById('file-input');
+            const profilePicture = document.getElementById('profile-picture');
+            
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profilePicture.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
         function uploadProfile() {
-            const usernameInput = document.getElementById('username');
+            const usernameInput = document.getElementById('username-input');
             const fileInput = document.getElementById('file-input');
             const profilePicture = document.getElementById('profile-picture');
 
@@ -240,12 +269,14 @@
             }
 
             if (file) {
+                // Upload the file to the server if needed
+                // You can use AJAX or any other method to handle the file upload
+                // For now, just display the uploaded image
                 profilePicture.src = URL.createObjectURL(file);
             }
 
-            updateBio(); // You may want to call updateBio() here to update bio as well
+            updateBio();
         }
-
         function uploadPicture() {
             const fileInput = document.getElementById('post-file-input');
             const file = fileInput.files[0];
