@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
- body {
+body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
@@ -43,25 +43,6 @@
             max-width: 800px;
             margin: 20px auto;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fafafa;
-        }
-
-        header {
-            background-color: #405de6;
-            color: white;
-            text-align: center;
-            padding: 1em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-        }
 
         #profile-section {
             display: flex;
@@ -83,14 +64,6 @@
             height: 100px;
             object-fit: cover;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        #upload-section {
-            text-align: left;
-        }
-
-        #file-input {
-            margin-bottom: 10px;
         }
 
         #bio {
@@ -167,12 +140,13 @@
     <header>
         <h1>Simple Social Media</h1>
     </header>
-       <nav>
+    <nav>
         <a href="#profile-section">Profile</a>
         <a href="#upload-section">Upload</a>
         <a href="#biblical-studies-section">Studies</a>
         <a href="#youtube-section">YouTube</a>
     </nav>
+
     <main>
         <section id="profile-section">
             <div id="user-profile">
@@ -187,7 +161,7 @@
                 <button onclick="updateBio()">Update Bio</button>
             </div>
         </section>
-         <footer>
+       <footer>
         <div id="social-media-icons">
             <i class="fab fa-facebook"></i>
             <i class="fab fa-twitter"></i>
@@ -195,7 +169,6 @@
             <i class="fab fa-linkedin"></i>
         </div>
     </footer>
-
         <section id="upload-section">
             <h2>Upload Picture</h2>
             <div id="post-section">
