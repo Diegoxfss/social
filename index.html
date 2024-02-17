@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-body {
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
@@ -13,7 +14,7 @@ body {
         }
 
         header {
-            background-color: #405de6;
+            background-color: #2c3e50; /* Darkened color */
             color: white;
             text-align: center;
             padding: 1em;
@@ -46,28 +47,52 @@ body {
 
         #profile-section {
             display: flex;
-            justify-content: space-between;
-            background-color: white;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f2f2f2;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin-bottom: 20px;
         }
 
-        #user-profile {
-            text-align: center;
-        }
-
         #profile-picture {
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
+            width: 150px; /* Increased size */
+            height: 150px; /* Increased size */
             object-fit: cover;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Added shadow */
+            margin-bottom: 20px;
+        }
+
+        #user-profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #username-display {
+            font-size: 24px; /* Increased size */
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
         #bio {
-            margin-top: 10px;
+            font-size: 16px; /* Increased size */
+        }
+
+        .profile-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .profile-buttons button {
+            background-color: #405de6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         .post {
@@ -130,12 +155,14 @@ body {
             max-width: 600px;
             height: 300px;
         }
-         section {
+
+        section {
             margin-top: 40px;
         }
     </style>
     <title>X-fo</title>
 </head>
+
 <body>
     <header>
         <h1>X-fo</h1>
@@ -149,15 +176,13 @@ body {
 
     <main>
         <section id="profile-section">
+            <img id="profile-picture" src="" alt="Profile Picture">
             <div id="user-profile">
-                <label for="username">Choose Your Name:</label>
-                <input type="text" id="username" placeholder="Your Name">
-                <img id="profile-picture" src="" alt="Profile Picture">
-                <input type="file" id="file-input" accept="image/*">
-                <button onclick="uploadProfile()">Upload Profile</button>
                 <h2 id="username-display"></h2>
                 <p id="bio"></p>
-                <textarea id="comment-input" placeholder="Type your bio..."></textarea>
+            </div>
+            <div class="profile-buttons">
+                <button onclick="uploadProfile()">Upload Profile</button>
                 <button onclick="updateBio()">Update Bio</button>
             </div>
         </section>
