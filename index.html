@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
+body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
@@ -212,272 +212,276 @@
         </div>
     </footer>
 
-   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        loginUser();
-        loadUserProfile();
-        loadPosts();
-        loadBiblicalStudies();
-        loadYouTubeVideos();
-    });
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loginUser();
+            loadUserProfile();
+            loadPosts();
+            loadBiblicalStudies();
+            loadYouTubeVideos();
+        });
 
-    function uploadProfile() {
-        const usernameInput = document.getElementById('username');
-        const fileInput = document.getElementById('file-input');
-        const profilePicture = document.getElementById('profile-picture');
+        function uploadProfile() {
+            const usernameInput = document.getElementById('username');
+            const fileInput = document.getElementById('file-input');
+            const profilePicture = document.getElementById('profile-picture');
 
-        const username = usernameInput.value;
-        const file = fileInput.files[0];
+            const username = usernameInput.value;
+            const file = fileInput.files[0];
 
-        if (username) {
-            document.getElementById('username-display').textContent = username;
-        }
-
-        if (file) {
-            profilePicture.src = URL.createObjectURL(file);
-        }
-
-        updateBio(); // You may want to call updateBio() here to update bio as well
-    }
-
-    function uploadPicture() {
-        const fileInput = document.getElementById('post-file-input');
-        const file = fileInput.files[0];
-
-        if (file) {
-            const postSection = document.getElementById('post-section');
-            const postElement = createPostElement(file);
-            postSection.prepend(postElement);
-        } else {
-            alert('Please select a file to upload.');
-        }
-    }
-
-    function updateBio() {
-        const newBio = document.getElementById('comment-input').value;
-        const bioElement = document.getElementById('bio');
-        bioElement.textContent = newBio;
-    }
-
-    function uploadStudy() {
-        const fileInput = document.getElementById('study-file-input');
-        const file = fileInput.files[0];
-        const description = document.getElementById('study-description').value;
-
-        if (file) {
-            const studySection = document.getElementById('study-section');
-            const studyElement = createStudyElement(file, description);
-            studySection.prepend(studyElement);
-        } else {
-            alert('Please select a file to upload.');
-        }
-    }
-
-    function embedYouTubeVideo() {
-        const youtubeLink = document.getElementById('youtube-link').value;
-
-        if (youtubeLink) {
-            const youtubeContainer = document.getElementById('youtube-container');
-            const videoId = getYoutubeVideoId(youtubeLink);
-
-            if (videoId) {
-                const youtubeElement = embedYouTubeElement(videoId);
-                youtubeContainer.innerHTML = '';
-                youtubeContainer.appendChild(youtubeElement);
-            } else {
-                alert('Invalid YouTube link. Please enter a valid link.');
+            if (username) {
+                document.getElementById('username-display').textContent = username;
             }
-        } else {
-            alert('Please enter a YouTube link.');
+
+            if (file) {
+                profilePicture.src = URL.createObjectURL(file);
+            }
+
+            updateBio(); // You may want to call updateBio() here to update bio as well
         }
-    }
 
-    function createPostElement(file) {
-        const postElement = document.createElement('div');
-        postElement.classList.add('post');
+        function uploadPicture() {
+            const fileInput = document.getElementById('post-file-input');
+            const file = fileInput.files[0];
 
-        const postImage = document.createElement('img');
-        postImage.classList.add('post-image');
-        postImage.src = URL.createObjectURL(file);
-
-        const postActions = document.createElement('div');
-        postActions.classList.add('actions', 'post-actions');
-
-        const likeButton = document.createElement('button');
-        likeButton.textContent = 'Like';
-        likeButton.addEventListener('click', () => likePost(postElement));
-
-        const commentButton = document.createElement('button');
-        commentButton.textContent = 'Comment';
-        commentButton.addEventListener('click', () => commentPost(postElement));
-
-        postActions.appendChild(likeButton);
-        postActions.appendChild(commentButton);
-
-        postElement.appendChild(postImage);
-        postElement.appendChild(postActions);
-
-        return postElement;
-    }
-
-    function likePost(postElement) {
-        const likeCount = document.getElementById('like-count');
-        likeCount.textContent = parseInt(likeCount.textContent) + 1;
-    }
-
-    function commentPost(postElement) {
-        const commentInput = prompt('Enter your comment:');
-        if (commentInput) {
-            const commentSection = document.createElement('div');
-            commentSection.textContent = `${getUsername()}: ${commentInput}`;
-            postElement.appendChild(commentSection);
+            if (file) {
+                const postSection = document.getElementById('post-section');
+                const postElement = createPostElement(file);
+                postSection.prepend(postElement);
+            } else {
+                alert('Please select a file to upload.');
+            }
         }
-    }
 
-    function createStudyElement(file, description) {
-        const studyElement = document.createElement('div');
-        studyElement.classList.add('study');
-
-        const studyLink = document.createElement('a');
-        studyLink.href = URL.createObjectURL(file);
-        studyLink.textContent = 'Download Study';
-
-        const studyDescription = document.createElement('p');
-        studyDescription.textContent = description;
-        const studyActions = document.createElement('div');
-        studyActions.classList.add('actions', 'study-actions');
-
-        const likeButton = document.createElement('button');
-        likeButton.textContent = 'Like';
-        likeButton.addEventListener('click', () => likeStudy(studyElement));
-
-        const commentButton = document.createElement('button');
-        commentButton.textContent = 'Comment';
-        commentButton.addEventListener('click', () => commentStudy(studyElement));
-
-        studyActions.appendChild(likeButton);
-        studyActions.appendChild(commentButton);
-
-        studyElement.appendChild(studyLink);
-        studyElement.appendChild(studyDescription);
-        studyElement.appendChild(studyActions);
-
-        return studyElement;
-    }
-
-    function likeStudy(studyElement) {
-        const likeCount = document.getElementById('like-count');
-        likeCount.textContent = parseInt(likeCount.textContent) + 1;
-    }
-
-    function embedYouTubeElement(videoId) {
-        const youtubeElement = document.createElement('div');
-        youtubeElement.classList.add('youtube-video');
-
-        const youtubeActions = document.createElement('div');
-        youtubeActions.classList.add('actions', 'youtube-actions');
-
-        const likeButton = document.createElement('button');
-        likeButton.textContent = 'Like';
-        likeButton.addEventListener('click', () => likeYouTubeVideo(youtubeElement));
-
-        const commentButton = document.createElement('button');
-        commentButton.textContent = 'Comment';
-        commentButton.addEventListener('click', () => commentYouTubeVideo(youtubeElement));
-
-        youtubeActions.appendChild(likeButton);
-        youtubeActions.appendChild(commentButton);
-
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube.com/embed/${videoId}`;
-        iframe.allow = 'autoplay; encrypted-media';
-        iframe.frameborder = '0';
-        iframe.allowfullscreen = true;
-
-        youtubeElement.appendChild(iframe);
-        youtubeElement.appendChild(youtubeActions);
-
-        return youtubeElement;
-    }
-
-    function likeYouTubeVideo(youtubeElement) {
-        const likeCount = document.getElementById('like-count');
-        likeCount.textContent = parseInt(likeCount.textContent) + 1;
-    }
-
-    function commentStudy(studyElement) {
-        const commentInput = prompt('Enter your comment:');
-        if (commentInput) {
-            const commentSection = document.createElement('div');
-            commentSection.textContent = `${getUsername()}: ${commentInput}`;
-            studyElement.appendChild(commentSection);
+        function updateBio() {
+            const newBio = document.getElementById('comment-input').value;
+            const bioElement = document.getElementById('bio');
+            bioElement.textContent = newBio;
         }
-    }
 
-    function commentYouTubeVideo(youtubeElement) {
-        const commentInput = prompt('Enter your comment:');
-        if (commentInput) {
-            const commentSection = document.createElement('div');
-            commentSection.textContent = `${getUsername()}: ${commentInput}`;
-            youtubeElement.appendChild(commentSection);
+        function uploadStudy() {
+            const fileInput = document.getElementById('study-file-input');
+            const file = fileInput.files[0];
+            const description = document.getElementById('study-description').value;
+
+            if (file) {
+                const studySection = document.getElementById('study-section');
+                const studyElement = createStudyElement(file, description);
+                studySection.prepend(studyElement);
+            } else {
+                alert('Please select a file to upload.');
+            }
         }
-    }
 
-    function getUsername() {
-        return document.getElementById('username-display').textContent;
-    }
+        function embedYouTubeVideo() {
+            const youtubeLink = document.getElementById('youtube-link').value;
 
-    function getYoutubeVideoId(url) {
-        const regex = /^(?:(?:https?:)?\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-        const match = url.match(regex);
-        return match ? match[1] : null;
-    }
+            if (youtubeLink) {
+                const youtubeContainer = document.getElementById('youtube-container');
+                const videoId = getYoutubeVideoId(youtubeLink);
 
-           if (email === 'diego@diego.com' && password === '101010') {
-            displayRandomVerse();
-        } else {
-            alert('Invalid credentials. Please try again.');
+                if (videoId) {
+                    const youtubeElement = embedYouTubeElement(videoId);
+                    youtubeContainer.innerHTML = '';
+                    youtubeContainer.appendChild(youtubeElement);
+                } else {
+                    alert('Invalid YouTube link. Please enter a valid link.');
+                }
+            } else {
+                alert('Please enter a YouTube link.');
+            }
         }
+
+        function createPostElement(file) {
+            const postElement = document.createElement('div');
+            postElement.classList.add('post');
+
+            const postImage = document.createElement('img');
+            postImage.classList.add('post-image');
+            postImage.src = URL.createObjectURL(file);
+
+            const postActions = document.createElement('div');
+            postActions.classList.add('actions', 'post-actions');
+
+            const likeButton = document.createElement('button');
+            likeButton.textContent = 'Like';
+            likeButton.addEventListener('click', () => likePost(postElement));
+
+            const commentButton = document.createElement('button');
+            commentButton.textContent = 'Comment';
+            commentButton.addEventListener('click', () => commentPost(postElement));
+
+            postActions.appendChild(likeButton);
+            postActions.appendChild(commentButton);
+
+            postElement.appendChild(postImage);
+            postElement.appendChild(postActions);
+
+            return postElement;
+        }
+
+        function likePost(postElement) {
+            const likeCount = document.getElementById('like-count');
+            likeCount.textContent = parseInt(likeCount.textContent) + 1;
+        }
+
+function commentPost(postElement) {
+    const commentInput = prompt('Enter your comment:');
+    if (commentInput) {
+        const commentSection = document.createElement('div');
+        commentSection.textContent = `${getUsername()}: ${commentInput}`;
+        postElement.appendChild(commentSection);
     }
+}
 
-    function loadUserProfile() {
-        const userData = {
-            profilePicture: 'default-profile.jpg',
-            username: 'Username',
-            bio: 'This is my bio.',
-        };
+function createStudyElement(file, description) {
+    const studyElement = document.createElement('div');
+    studyElement.classList.add('study');
 
-        const profilePicture = document.getElementById('profile-picture');
-        const usernameElement = document.getElementById('username-display');
-        const bioElement = document.getElementById('bio');
+    const studyLink = document.createElement('a');
+    studyLink.href = URL.createObjectURL(file);
+    studyLink.textContent = 'Download Study';
 
-        profilePicture.src = userData.profilePicture;
-        usernameElement.textContent = userData.username;
-        bioElement.textContent = userData.bio;
+    const studyDescription = document.createElement('p');
+    studyDescription.textContent = description;
+    const studyActions = document.createElement('div');
+    studyActions.classList.add('actions', 'study-actions');
+
+    const likeButton = document.createElement('button');
+    likeButton.textContent = 'Like';
+    likeButton.addEventListener('click', () => likeStudy(studyElement));
+
+    const commentButton = document.createElement('button');
+    commentButton.textContent = 'Comment';
+    commentButton.addEventListener('click', () => commentStudy(studyElement));
+
+    studyActions.appendChild(likeButton);
+    studyActions.appendChild(commentButton);
+
+    studyElement.appendChild(studyLink);
+    studyElement.appendChild(studyDescription);
+    studyElement.appendChild(studyActions);
+
+    return studyElement;
+}
+
+function likeStudy(studyElement) {
+    const likeCount = document.getElementById('like-count');
+    likeCount.textContent = parseInt(likeCount.textContent) + 1;
+}
+
+function embedYouTubeElement(videoId) {
+    const youtubeElement = document.createElement('div');
+    youtubeElement.classList.add('youtube-video');
+
+    const youtubeActions = document.createElement('div');
+    youtubeActions.classList.add('actions', 'youtube-actions');
+
+    const likeButton = document.createElement('button');
+    likeButton.textContent = 'Like';
+    likeButton.addEventListener('click', () => likeYouTubeVideo(youtubeElement));
+
+    const commentButton = document.createElement('button');
+    commentButton.textContent = 'Comment';
+    commentButton.addEventListener('click', () => commentYouTubeVideo(youtubeElement));
+
+    youtubeActions.appendChild(likeButton);
+    youtubeActions.appendChild(commentButton);
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}`;
+    iframe.allow = 'autoplay; encrypted-media';
+    iframe.frameborder = '0';
+    iframe.allowfullscreen = true;
+
+    youtubeElement.appendChild(iframe);
+    youtubeElement.appendChild(youtubeActions);
+
+    return youtubeElement;
+}
+
+function likeYouTubeVideo(youtubeElement) {
+    const likeCount = document.getElementById('like-count');
+    likeCount.textContent = parseInt(likeCount.textContent) + 1;
+}
+
+function commentStudy(studyElement) {
+    const commentInput = prompt('Enter your comment:');
+    if (commentInput) {
+        const commentSection = document.createElement('div');
+        commentSection.textContent = `${getUsername()}: ${commentInput}`;
+        studyElement.appendChild(commentSection);
     }
+}
 
-    function loadPosts() {
-        // Placeholder for loading posts
-        // Fetch posts from a server or use a database
-        // Create and append post elements to the #post-section
+function commentYouTubeVideo(youtubeElement) {
+    const commentInput = prompt('Enter your comment:');
+    if (commentInput) {
+        const commentSection = document.createElement('div');
+        commentSection.textContent = `${getUsername()}: ${commentInput}`;
+        youtubeElement.appendChild(commentSection);
     }
+}
 
-    function loadBiblicalStudies() {
-        // Placeholder for loading biblical studies
-        // Fetch studies from a server or use a database
-        // Create and append study elements to the #study-section
-    }
+function getUsername() {
+    return document.getElementById('username-display').textContent;
+}
 
-    function loadYouTubeVideos() {
-        // Placeholder for loading YouTube videos
-        // Fetch videos from a server or use a database
-        // Create and append YouTube video elements to the #youtube-section
-    }
+function getYoutubeVideoId(url) {
+    const regex = /^(?:(?:https?:)?\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+}
 
-    function displayRandomVerse() {
-        // Placeholder for displaying a random Bible verse
-        // You can fetch and display a verse from a Bible API or use your own data
+function loginUser() {
+    const email = prompt('Enter your email:');
+    const password = prompt('Enter your password:');
+
+    if (email === 'diego@diego.com' && password === '101010') {
+        displayRandomVerse();
+    } else {
+        alert('Invalid credentials. Please try again.');
     }
+}
+
+function loadUserProfile() {
+    const userData = {
+        profilePicture: 'default-profile.jpg',
+        username: 'Username',
+        bio: 'This is my bio.',
+    };
+
+    const profilePicture = document.getElementById('profile-picture');
+    const usernameElement = document.getElementById('username-display');
+    const bioElement = document.getElementById('bio');
+
+    profilePicture.src = userData.profilePicture;
+    usernameElement.textContent = userData.username;
+    bioElement.textContent = userData.bio;
+}
+
+function loadPosts() {
+    // Placeholder for loading posts
+    // Fetch posts from a server or use a database
+    // Create and append post elements to the #post-section
+}
+
+function loadBiblicalStudies() {
+    // Placeholder for loading biblical studies
+    // Fetch studies from a server or use a database
+    // Create and append study elements to the #study-section
+}
+
+function loadYouTubeVideos() {
+    // Placeholder for loading YouTube videos
+    // Fetch videos from a server or use a database
+    // Create and append YouTube video elements to the #youtube-section
+}
+
+function displayRandomVerse() {
+    // Placeholder for displaying a random Bible verse
+    // You can fetch and display a verse from a Bible API or use your own data
+}
 </script>
 </body>
 </html>
