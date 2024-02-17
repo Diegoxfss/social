@@ -9,12 +9,12 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #0f141c; /* Dark background color */
-    color: white; /* Text color */
+    background-color: #f0f0f0; /* Lighter background color */
+    color: #333; /* Text color */
 }
 
 header {
-    background-color: #1c2331; /* Dark header color */
+    background-color: #394240; /* Darker header color */
     color: white;
     text-align: center;
     padding: 1em;
@@ -22,21 +22,25 @@ header {
 }
 
 nav {
-    background-color: #151a25; /* Dark navigation bar color */
+    background: linear-gradient(to right, #394240, #293137); /* Gradient for navbar */
     overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow */
 }
 
 nav a {
     float: left;
     display: block;
-    color: white;
+    color: #ccc; /* Lighter text color */
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    transition: box-shadow 0.3s ease; /* Smooth transition for box-shadow */
 }
 
 nav a:hover {
-    background-color: #19202c; /* Slightly darker hover color */
+    background-color: #4d5c65; /* Darker hover color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
+    color: white;
 }
 
 main {
@@ -46,22 +50,12 @@ main {
 
 #profile-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #1c2331; /* Dark profile section color */
+    justify-content: space-between;
+    background-color: white;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-bottom: 20px;
-}
-
-#logo {
-    width: 50px; /* Adjust the size of your logo */
-    height: 50px;
-    background: url('path_to_your_logo') no-repeat center center;
-    background-size: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
 }
 
 #user-profile {
@@ -73,32 +67,29 @@ main {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 0, 0, 0.5); /* Neon red shadow */
-    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; /* Adjust the margin as needed */
 }
 
 #username-display {
     margin: 10px 0;
-    text-shadow: 2px 2px 4px #000000; /* Text shadow */
 }
 
 #bio {
     margin: 10px 0;
-    text-shadow: 2px 2px 4px #000000; /* Text shadow */
 }
 
 #comment-input {
     width: calc(100% - 15px);
     padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #2e3847; /* Darker border color */
+    margin-bottom: 10px; /* Adjust the margin as needed */
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Neon red shadow */
 }
 
 .post {
-    background-color: #1c2331; /* Dark post background color */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -108,7 +99,6 @@ main {
     width: 100%;
     max-height: 400px;
     object-fit: cover;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.2); /* Neon red shadow */
 }
 
 .actions {
@@ -116,19 +106,24 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 0, 0, 0.2); /* Neon red background */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
 }
 
 button {
-    background-color: #1da1f2; /* Twitter-like blue button color */
+    background-color: #777; /* Gray button color */
     color: white;
     border: none;
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 0, 0, 0.5); /* Neon red shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly lighter shadow */
+}
+
+#comment-input {
+    width: calc(100% - 15px);
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #social-media-icons {
@@ -140,9 +135,9 @@ button {
 #social-media-icons i {
     font-size: 24px;
     margin: 0 10px;
-    color: #1da1f2; /* Twitter-like blue icon color */
+    color: #4d5c65; /* Darker icon color */
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Neon red shadow */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Lighter shadow */
 }
 
 #youtube-container {
@@ -153,7 +148,6 @@ button {
     width: 100%;
     max-width: 600px;
     height: 300px;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.2); /* Neon red shadow */
 }
 
 section {
