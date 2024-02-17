@@ -6,55 +6,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
 body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fafafa;
-        }
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+}
 
-        header {
-            background-color: #405de6;
-            color: white;
-            text-align: center;
-            padding: 1em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+header {
+    background-color: #405de6;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        nav {
-            background-color: #333;
-            overflow: hidden;
-        }
+nav {
+    background-color: #333;
+    overflow: hidden;
+}
 
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
+nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
 
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
 
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-        }
+main {
+    max-width: 800px;
+    margin: 20px auto;
+}
 
-        #profile-section {
-            display: flex;
-            justify-content: space-between;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
+#profile-section {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
 
-      #user-profile {
+#user-profile {
     text-align: center;
 }
 
@@ -64,7 +64,7 @@ body {
     height: 100px;
     object-fit: cover;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px; /* Adjust the margin as needed */
+    margin-bottom: 10px;
 }
 
 #username-display {
@@ -78,73 +78,68 @@ body {
 #comment-input {
     width: calc(100% - 15px);
     padding: 8px;
-    margin-bottom: 10px; /* Adjust the margin as needed */
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-        .post {
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
 
-        .post-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-        }
+.post {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
 
-        .actions {
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
 
-        button {
-            background-color: #405de6;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+.actions {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        #comment-input {
-            width: calc(100% - 15px);
-            padding: 8px;
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+button {
+    background-color: #405de6;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        #social-media-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
+#social-media-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
-        #social-media-icons i {
-            font-size: 24px;
-            margin: 0 10px;
-            color: #405de6;
-            cursor: pointer;
-        }
+#social-media-icons i {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #405de6;
+    cursor: pointer;
+}
 
-        #youtube-container {
-            text-align: center;
-        }
+#youtube-container {
+    text-align: center;
+}
 
-        .youtube-video iframe {
-            width: 100%;
-            max-width: 600px;
-            height: 300px;
-        }
-         section {
-            margin-top: 40px;
-        }
+.youtube-video iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+}
+
+section {
+    margin-top: 40px;
+}
+
     </style>
     <title>X-fo</title>
 </head>
@@ -161,7 +156,8 @@ body {
 
     <main>
 
- <section id="profile-section">
+<!-- Inside the #profile-section div in your HTML -->
+<section id="profile-section">
     <div id="user-profile">
         <label for="username">Choose Your Name:</label>
         <input type="text" id="username" placeholder="Your Name">
@@ -170,10 +166,13 @@ body {
         <button onclick="uploadProfile()">Upload Profile</button>
         <h2 id="username-display"></h2>
         <p id="bio"></p>
-        <textarea id="comment-input" placeholder="Type your bio..."></textarea>
-        <button onclick="updateBio()">Update Bio</button>
+        <div id="profile-buttons">
+            <textarea id="comment-input" placeholder="Type your bio..."></textarea>
+            <button onclick="updateBio()">Update Bio</button>
+        </div>
     </div>
 </section>
+
 
        <footer>
         <div id="social-media-icons">
