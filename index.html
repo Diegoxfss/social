@@ -6,261 +6,262 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
    body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #13033b;
-            color: #ffffff;
-        }
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #13033b;
+    color: #ffffff;
+}
 
-        header {
-            background-image: url('x.gif');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #01070d;
-            color: white;
-            text-align: center;
-            padding: 1em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-        }
+header {
+    background-image: url('x.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #01070d;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
 
-        nav {
-            background-color: #0f1f4b;
-            overflow: hidden;
-        }
+nav {
+    background-color: #0f1f4b;
+    overflow: hidden;
+}
 
-        nav a {
-            float: left;
-            display: block;
-            padding: 14px 16px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+nav a {
+    float: left;
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-        nav a:hover {
-            background-color: #051d4e;
-            color: #ffd700;
-        }
+nav a:hover {
+    background-color: #051d4e;
+    color: #ffd700;
+}
 
-        nav a::before {
-            content: '';
-            position: absolute;
-            height: 4px;
-            width: 0;
-            bottom: 0;
-            left: 50%;
-            background-color: #01070d;
-            transition: all 0.3s ease-in-out;
-        }
+nav a::before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 0;
+    bottom: 0;
+    left: 50%;
+    background-color: #01070d;
+    transition: all 0.3s ease-in-out;
+}
 
-        nav a:hover::before {
-            width: 100%;
-            left: 0;
-        }
+nav a:hover::before {
+    width: 100%;
+    left: 0;
+}
 
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            color: #ffffff;
-        }
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    color: #ffffff;
+}
 
-        #profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #333;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
+#profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
 
-        #profile-picture {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            margin-bottom: 10px;
-        }
+#profile-picture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
 
-        #username-display {
-            font-size: 1.5em;
-            margin-bottom: 5px;
-        }
+#username-display {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
 
-        #bio {
-            margin-bottom: 15px;
-        }
+#bio {
+    margin-bottom: 15px;
+}
 
-        #comment-input {
-            width: calc(100% - 15px);
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+#comment-input {
+    width: calc(100% - 15px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #01070d;
-            color: white;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #01070d;
+    color: white;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
-        #social-media-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
+#social-media-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
-        #social-media-icons i {
-            font-size: 24px;
-            margin: 0 10px;
-            color: #091550;
-            cursor: pointer;
-        }
+#social-media-icons i {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #091550;
+    cursor: pointer;
+}
 
-        #profile-buttons,
-        #upload-section,
-        #biblical-studies-section,
-        #youtube-section {
-            background-color: #01070d;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            padding: 20px;
-        }
+#profile-buttons,
+#upload-section,
+#biblical-studies-section,
+#youtube-section {
+    background-color: #01070d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
 
-        #profile-buttons button,
-        #upload-section button,
-        #biblical-studies-section button,
-        #youtube-section button {
-            background-color: #405de6;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+#profile-buttons button,
+#upload-section button,
+#biblical-studies-section button,
+#youtube-section button {
+    background-color: #405de6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-        #profile-buttons button:hover,
-        #upload-section button:hover,
-        #biblical-studies-section button:hover,
-        #youtube-section button:hover {
-            background-color: #364fc7;
-        }
+#profile-buttons button:hover,
+#upload-section button:hover,
+#biblical-studies-section button:hover,
+#youtube-section button:hover {
+    background-color: #364fc7;
+}
 
-        .post,
-        .study,
-        .youtube-video {
-            background-color: #333;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
+.post,
+.study,
+.youtube-video {
+    background-color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
 
-        .actions,
-        .study-actions,
-        .youtube-actions {
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.actions,
+.study-actions,
+.youtube-actions {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .actions button,
-        .study-actions button,
-        .youtube-actions button {
-            background-color: #405de6;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+.actions button,
+.study-actions button,
+.youtube-actions button {
+    background-color: #405de6;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-        .actions button:hover,
-        .study-actions button:hover,
-        .youtube-actions button:hover {
-            background-color: #364fc7;
-        }
+.actions button:hover,
+.study-actions button:hover,
+.youtube-actions button:hover {
+    background-color: #364fc7;
+}
 
-        .post-image,
-        .youtube-video iframe {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-        }
+.post-image,
+.youtube-video iframe {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
 
-        section {
-            margin-top: 40px;
-        }
+section {
+    margin-top: 40px;
+}
 
-        #username-input {
-            margin-bottom: 10px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            color: #000000;
-        }
+#username-input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    color: #000000;
+}
 
-        #file-input,
-        #post-file-input,
-        #study-file-input {
-            margin-bottom: 10px;
-        }
+#file-input,
+#post-file-input,
+#study-file-input {
+    margin-bottom: 10px;
+}
 
-        #sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 200px;
-            background-color: #0f1f4b;
-            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
-            transition: box-shadow 0.3s, transform 0.3s;
-            transform: translateX(-200px);
-        }
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    background-color: #0f1f4b;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s, transform 0.3s;
+    transform: translateX(-200px);
+}
 
-        #sidebar.active {
-            transform: translateX(0);
-        }
+#sidebar.active {
+    transform: translateX(0);
+}
 
-        #sidebar ul {
-            list-style: none;
-            padding: 0;
-           margin: 0;
-        }
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        #sidebar li {
-            border-bottom: 1px solid #051d4e;
-        }
+#sidebar li {
+    border-bottom: 1px solid #051d4e;
+}
 
-        #sidebar a {
-            display: block;
-            padding: 16px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+#sidebar a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-        #sidebar a:hover {
-            background-color: #051d4e;
-            color: #ffd700;
-        }
+#sidebar a:hover {
+    background-color: #051d4e;
+    color: #ffd700;
+}
+
     </style>
     <title>X-fo</title>
 </head>
