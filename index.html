@@ -91,6 +91,8 @@
             margin: 20px 0;
             position: fixed;
             top: 70px;
+            right: -200px; /* Initial position */
+            transition: right 0.5s ease-in-out; /* Smooth transition */
         }
 
         #advertisement-left img {
@@ -98,6 +100,18 @@
             height: auto;
             display: block;
             margin-top: 10px;
+        }
+
+        #advertisement-left .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #advertisement-left.closed {
+            right: -250px; /* Move off-screen when closed */
         }
 
         #profile-picture {
@@ -288,8 +302,9 @@
         <title>X-fo</title>
     </head>
     <body>
-        <div id="advertisement-left">
-            <h2>Left Advertisement</h2>
+       <div id="advertisement-left" class="closed">
+            <span class="close-btn" onclick="closeAd()"> &times; </span>
+            <h2>Advertisement</h2>
             <img src="your-image.jpg" alt="Advertisement Left" style="max-width: 100%; margin-top: 10px;">
         </div>
 
@@ -648,6 +663,9 @@
             // Fetch videos from a server or use a database
             // Create and append YouTube video elements to the #youtube-section
         }
+          function closeAd() {
+                document.getElementById('advertisement-left').classList.add('closed');
+            }
     </script>
 </body>
 </html>
