@@ -5,80 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #13033b;
-    color: #ffffff;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #13033b;
+            color: #ffffff;
+        }
 
-header {
-    background-image: url('x.gif');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #01070d;
-    color: white;
-    text-align: center;
-    padding: 1em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-}
+        header {
+            background-image: url('x.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #01070d;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
 
-nav {
-    background-color: #0f1f4b;
-    overflow: hidden;
-}
+        nav {
+            background-color: #0f1f4b;
+            overflow: hidden;
+        }
 
-nav a {
-    float: left;
-    display: block;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-    transition: background-color 0.3s, color 0.3s;
-}
+        nav a {
+            float: left;
+            display: block;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+        }
 
-nav a:hover {
-    background-color: #051d4e;
-    color: #ffd700;
-}
+        nav a:hover {
+            background-color: #051d4e;
+            color: #ffd700;
+        }
 
-nav a::before {
-    content: '';
-    position: absolute;
-    height: 4px;
-    width: 0;
-    bottom: 0;
-    left: 50%;
-    background-color: #01070d;
-    transition: all 0.3s ease-in-out;
-}
+        nav a::before {
+            content: '';
+            position: absolute;
+            height: 4px;
+            width: 0;
+            bottom: 0;
+            left: 50%;
+            background-color: #01070d;
+            transition: all 0.3s ease-in-out;
+        }
 
-nav a:hover::before {
-    width: 100%;
-    left: 0;
-}
+        nav a:hover::before {
+            width: 100%;
+            left: 0;
+        }
 
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    color: #ffffff;
-}
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            color: #ffffff;
+            position: relative;
+        }
 
-#profile-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #333;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
+        #profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
 
- #advertisement-left,
+        #advertisement-left,
         #advertisement-right {
             width: 200px;
             background-color: #051d4e;
@@ -87,302 +89,307 @@ main {
             text-align: center;
             padding: 10px;
             margin: 20px 0;
-        }        
+            position: fixed;
+            top: 70px;
+        }
 
-#profile-picture {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    margin-bottom: 10px;
-}
+        #advertisement-left img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 10px;
+        }
 
-#username-display {
-    font-size: 1.5em;
-    margin-bottom: 5px;
-}
+        #profile-picture {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
 
-#bio {
-    margin-bottom: 15px;
-}
+        #username-display {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
 
-#comment-input {
-    width: calc(100% - 15px);
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+        #bio {
+            margin-bottom: 15px;
+        }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #01070d;
-    color: white;
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+        #comment-input {
+            width: calc(100% - 15px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-#social-media-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #01070d;
+            color: white;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
 
-#social-media-icons i {
-    font-size: 24px;
-    margin: 0 10px;
-    color: #091550;
-    cursor: pointer;
-}
+        #social-media-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-#profile-buttons,
-#upload-section,
-#biblical-studies-section,
-#youtube-section {
-    background-color: #01070d;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 20px;
-}
+        #social-media-icons i {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #091550;
+            cursor: pointer;
+        }
 
-#profile-buttons button,
-#upload-section button,
-#biblical-studies-section button,
-#youtube-section button {
-    background-color: #405de6;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        #profile-buttons,
+        #upload-section,
+        #biblical-studies-section,
+        #youtube-section {
+            background-color: #01070d;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
 
-#profile-buttons button:hover,
-#upload-section button:hover,
-#biblical-studies-section button:hover,
-#youtube-section button:hover {
-    background-color: #364fc7;
-}
+        #profile-buttons button,
+        #upload-section button,
+        #biblical-studies-section button,
+        #youtube-section button {
+            background-color: #405de6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.post,
-.study,
-.youtube-video {
-    background-color: #333;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
+        #profile-buttons button:hover,
+        #upload-section button:hover,
+        #biblical-studies-section button:hover,
+        #youtube-section button:hover {
+            background-color: #364fc7;
+        }
 
-.actions,
-.study-actions,
-.youtube-actions {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .post,
+        .study,
+        .youtube-video {
+            background-color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
 
-.actions button,
-.study-actions button,
-.youtube-actions button {
-    background-color: #405de6;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        .actions,
+        .study-actions,
+        .youtube-actions {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.actions button:hover,
-.study-actions button:hover,
-.youtube-actions button:hover {
-    background-color: #364fc7;
-}
+        .actions button,
+        .study-actions button,
+        .youtube-actions button {
+            background-color: #405de6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.post-image,
-.youtube-video iframe {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-}
+        .actions button:hover,
+        .study-actions button:hover,
+        .youtube-actions button:hover {
+            background-color: #364fc7;
+        }
 
-section {
-    margin-top: 40px;
-}
+        .post-image,
+        .youtube-video iframe {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
 
-#username-input {
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    color: #000000;
-}
+        section {
+            margin-top: 40px;
+        }
 
-#file-input,
-#post-file-input,
-#study-file-input {
-    margin-bottom: 10px;
-}
+        #username-input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            color: #000000;
+        }
 
-#sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 200px;
-    background-color: #0f1f4b;
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s, transform 0.3s;
-    transform: translateX(-200px);
-}
+        #file-input,
+        #post-file-input,
+        #study-file-input {
+            margin-bottom: 10px;
+        }
 
-#sidebar.active {
-    transform: translateX(0);
-}
+        #sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 200px;
+                background-color: #0f1f4b;
+                box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+                transition: box-shadow 0.3s, transform 0.3s;
+                transform: translateX(-200px);
+            }
 
-#sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+            #sidebar.active {
+                transform: translateX(0);
+            }
 
-#sidebar li {
-    border-bottom: 1px solid #051d4e;
-}
+            #sidebar ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
 
-#sidebar a {
-    display: block;
-    padding: 16px;
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-    transition: background-color 0.3s, color 0.3s;
-}
+            #sidebar li {
+                border-bottom: 1px solid #051d4e;
+            }
 
-#sidebar a:hover {
-    background-color: #051d4e;
-    color: #ffd700;
-}
+            #sidebar a {
+                display: block;
+                padding: 16px;
+                text-decoration: none;
+                color: #fff;
+                font-size: 18px;
+                transition: background-color 0.3s, color 0.3s;
+            }
 
-    </style>
-    <title>X-fo</title>
-</head>
-<body>
-    <div id="advertisement-left">
-    <h2>Left Advertisement</h2>
-    <img src="your-image.jpg" alt="Advertisement Left" style="max-width: 100%; margin-top: 10px;">
-</div>
+            #sidebar a:hover {
+                background-color: #051d4e;
+                color: #ffd700;
+            }
 
-    <div id="sidebar">
-        <ul>
-            <li><a href="https://example1.com" target="_blank">Example 1</a></li>
-            <li><a href="https://example2.com" target="_blank">Example 2</a></li>
-            <li><a href="https://example3.com" target="_blank">Example 3</a></li>
-            <li><a href="https://example4.com" target="_blank">Example 4</a></li>
-            <li><a href="https://example5.com" target="_blank">Example 5</a></li>
-            <li><a href="https://example6.com" target="_blank">Example 6</a></li>
-            <li><a href="https://example7.com" target="_blank">Example 7</a></li>
-            <li><a href="https://example8.com" target="_blank">Example 8</a></li>
-            <li><a href="https://example9.com" target="_blank">Example 9</a></li>
-            <li><a href="https://example10.com" target="_blank">Example 10</a></li>
-        </ul>
-    </div>
-    <header>
-        <h1>X-fo</h1>
-        <button id="sidebar-toggle">&#9776; Sidebar</button>
-    </header>
-    
-    <nav>
-        <a href="#profile-section">Profile</a>
-        <a href="#upload-section">Upload</a>
-        <a href="#biblical-studies-section">Studies</a>
-        <a href="#youtube-section">YouTube</a>
-        <!-- Add the following links -->
-        <a href="#about-section">About</a>
-        <a href="#faq-section">FAQ</a>
-        <a href="#contact-section">Contact</a>
-    </nav>
+        </style>
+        <title>X-fo</title>
+    </head>
+    <body>
+        <div id="advertisement-left">
+            <h2>Left Advertisement</h2>
+            <img src="your-image.jpg" alt="Advertisement Left" style="max-width: 100%; margin-top: 10px;">
+        </div>
 
-    <main>
-        <section id="profile-section">
-            <img id="profile-picture" src="" alt="Profile Picture" style="margin-bottom: 10px;">
-            <p id="username-display"></p>
-            <p id="bio"></p>
-        </section>
+        <div id="sidebar">
+            <ul>
+                <li><a href="https://example1.com" target="_blank">Example 1</a></li>
+                <li><a href="https://example2.com" target="_blank">Example 2</a></li>
+                <li><a href="https://example3.com" target="_blank">Example 3</a></li>
+                <li><a href="https://example4.com" target="_blank">Example 4</a></li>
+                <li><a href="https://example5.com" target="_blank">Example 5</a></li>
+                <li><a href="https://example6.com" target="_blank">Example 6</a></li>
+                <li><a href="https://example7.com" target="_blank">Example 7</a></li>
+                <li><a href="https://example8.com" target="_blank">Example 8</a></li>
+                <li><a href="https://example9.com" target="_blank">Example 9</a></li>
+                <li><a href="https://example10.com" target="_blank">Example 10</a></li>
+            </ul>
+        </div>
+        <header>
+            <h1>X-fo</h1>
+            <button id="sidebar-toggle">&#9776; Sidebar</button>
+        </header>
         
-        <div style="display: flex; flex-direction: column; align-items: center; width: 50%; margin-top: 10px;">
-            <div style="display: flex; width: 100%; justify-content: space-between;">
-                <input type="text" id="username-input" placeholder="Update Your Username" style="width: 48%; margin-bottom: 10px;">
-                <input type="text" id="bio-input" placeholder="Update Your Bio..." style="width: 48%; margin-bottom: 10px;">
-            </div>
-            <input type="file" id="file-input" accept="image/*" style="width: 100%; margin-bottom: 10px;">
-            <div id="profile-buttons" style="display: flex; justify-content: space-between; width: 100%; margin-top: 10px;">
-                <button onclick="uploadProfile()" style="padding: 10px 20px; font-size: 14px; background-color: #405de6; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Update Profile</button>
-                <button onclick="updateBio()" style="padding: 10px 20px; font-size: 14px; background-color: #405de6; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Update Bio</button>
-            </div>
-        </div>
+        <nav>
+            <a href="#profile-section">Profile</a>
+            <a href="#upload-section">Upload</a>
+            <a href="#biblical-studies-section">Studies</a>
+            <a href="#youtube-section">YouTube</a>
+            <!-- Add the following links -->
+            <a href="#about-section">About</a>
+            <a href="#faq-section">FAQ</a>
+            <a href="#contact-section">Contact</a>
+        </nav>
 
-        <section id="upload-section">
-            <h2>Upload Picture</h2>
-            <div id="post-section">
-                <!-- Posts will be dynamically added here -->
+        <main>
+            <section id="profile-section">
+                <img id="profile-picture" src="" alt="Profile Picture" style="margin-bottom: 10px;">
+                <p id="username-display"></p>
+                <p id="bio"></p>
+            </section>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; margin-top: 10px;">
+                <div style="display: flex; width: 100%; justify-content: space-between;">
+                    <input type="text" id="username-input" placeholder="Update Your Username" style="width: 48%; margin-bottom: 10px;">
+                    <input type="text" id="bio-input" placeholder="Update Your Bio..." style="width: 48%; margin-bottom: 10px;">
+                </div>
+                <input type="file" id="file-input" accept="image/*" style="width: 100%; margin-bottom: 10px;">
+                <div id="profile-buttons" style="display: flex; justify-content: space-between; width: 100%; margin-top: 10px;">
+                    <button onclick="uploadProfile()" style="padding: 10px 20px; font-size: 14px; background-color: #405de6; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Update Profile</button>
+                    <button onclick="updateBio()" style="padding: 10px 20px; font-size: 14px; background-color: #405de6; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Update Bio</button>
+                </div>
             </div>
-            <div id="upload-section">
-                <input type="file" id="post-file-input" accept="image/*">
-                <button onclick="uploadPicture()">Upload Picture</button>
-            </div>
-        </section>
 
-        <section id="biblical-studies-section">
-            <h2>Files</h2>
-            <div id="study-section">
-               
-            </div>
-            <div id="add-study-section">
-                <input type="file" id="study-file-input" accept=".pdf, .doc, .docx">
-                <button onclick="uploadStudy()">Upload file</button>
-                <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
-            </div>
-        </section>
+            <section id="upload-section">
+                <h2>Upload Picture</h2>
+                <div id="post-section">
+                    <!-- Posts will be dynamically added here -->
+                </div>
+                <div id="upload-section">
+                    <input type="file" id="post-file-input" accept="image/*">
+                    <button onclick="uploadPicture()">Upload Picture</button>
+                </div>
+            </section>
 
-        <section id="youtube-section">
-            <h2>YouTube Videos</h2>
-            <div id="youtube-container">
-                <!-- YouTube videos will be dynamically added here -->
-            </div>
-            <div id="youtube-input">
-                <label for="youtube-link">YouTube Link:</label>
-                <input type="text" id="youtube-link" placeholder="Enter YouTube link">
-                <button onclick="embedYouTubeVideo()">Embed Video</button>
-            </div>
-        </section>
-    </main>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+            <section id="biblical-studies-section">
+                <h2>Files</h2>
+                <div id="study-section">
+                
+                </div>
+                <div id="add-study-section">
+                    <input type="file" id="study-file-input" accept=".pdf, .doc, .docx">
+                    <button onclick="uploadStudy()">Upload file</button>
+                    <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
+                </div>
+            </section>
 
-    <footer>
-        <div id="social-media-icons">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-linkedin"></i>
-        </div>
-        <br>
-        © 2024 Diego.xfss. I'm not responsible for the content of external sites. Read about our approach to external linking.
-    </footer>
+            <section id="youtube-section">
+                <h2>YouTube Videos</h2>
+                <div id="youtube-container">
+                    <!-- YouTube videos will be dynamically added here -->
+                </div>
+                <div id="youtube-input">
+                    <label for="youtube-link">YouTube Link:</label>
+                    <input type="text" id="youtube-link" placeholder="Enter YouTube link">
+                    <button onclick="embedYouTubeVideo()">Embed Video</button>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div id="social-media-icons">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-pinterest"></i>
+            </div>
+            <p>&copy; 2024 X-fo. All rights reserved.</p>
+        </footer>
+
     <script>
  function uploadProfile() {
             const usernameInput = document.getElementById('username-input');
