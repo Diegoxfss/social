@@ -536,32 +536,33 @@
         }
 
         function createPostElement(file) {
-            const postElement = document.createElement('div');
-            postElement.classList.add('post');
+    const postElement = document.createElement('div');
+    postElement.classList.add('post');
 
-            const postImage = document.createElement('img');
-            postImage.classList.add('post-image');
-            postImage.src = URL.createObjectURL(file);
+    const postImage = document.createElement('img');
+    postImage.classList.add('post-image');
+    postImage.src = URL.createObjectURL(file);
+    postImage.style.maxHeight = '200px'; // Adjust the maximum height as needed
 
-            const postActions = document.createElement('div');
-            postActions.classList.add('actions', 'post-actions');
+    const postActions = document.createElement('div');
+    postActions.classList.add('actions', 'post-actions');
 
-            const likeButton = document.createElement('button');
-            likeButton.textContent = 'Like';
-            likeButton.addEventListener('click', () => likePost(postElement));
+    const likeButton = document.createElement('button');
+    likeButton.textContent = 'Like';
+    likeButton.addEventListener('click', () => likePost(postElement));
 
-            const commentButton = document.createElement('button');
-            commentButton.textContent = 'Comment';
-            commentButton.addEventListener('click', () => commentPost(postElement));
+    const commentButton = document.createElement('button');
+    commentButton.textContent = 'Comment';
+    commentButton.addEventListener('click', () => commentPost(postElement));
 
-            postActions.appendChild(likeButton);
-            postActions.appendChild(commentButton);
+    postActions.appendChild(likeButton);
+    postActions.appendChild(commentButton);
 
-            postElement.appendChild(postImage);
-            postElement.appendChild(postActions);
+    postElement.appendChild(postImage);
+    postElement.appendChild(postActions);
 
-            return postElement;
-        }
+    return postElement;
+}
 
         function likePost(postElement) {
             // Implementation for liking a post
