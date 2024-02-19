@@ -67,6 +67,18 @@
             width: 100%;
             left: 0;
         }
+        #background-color-container {
+    margin-top: 10px;
+}
+
+#background-color-input {
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
 
        main {
             max-width: 800px;
@@ -418,11 +430,15 @@
 <div id="profile-section">
     <label for="file-input" class="custom-file-input">Upload Profile Picture</label>
     <input type="file" id="file-input" accept="image/*">
-    <input type="color" id="background-color-input" value="#ffffff" onchange="changeProfileBackgroundColor()">
+    <div id="background-color-container">
+        <label for="background-color-input">Choose Background Color:</label>
+        <input type="color" id="background-color-input" value="#ffffff" onchange="changeProfileBackgroundColor()">
+    </div>
     <img id="profile-picture" src="" alt="Profile Picture" style="margin-bottom: 10px;">
     <p id="username-display"></p>
     <p id="bio"></p>
 </div>
+
 
 
         <div id="profile-inputs">
