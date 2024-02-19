@@ -415,13 +415,15 @@
     </nav>
 
     <main>
-        <section id="profile-section">
-            <label for="file-input" class="custom-file-input">Upload Profile Picture</label>
-            <input type="file" id="file-input" accept="image/*">
-            <img id="profile-picture" src="" alt="Profile Picture" style="margin-bottom: 10px;">
-            <p id="username-display"></p>
-            <p id="bio"></p>
-        </section>
+<div id="profile-section">
+    <label for="file-input" class="custom-file-input">Upload Profile Picture</label>
+    <input type="file" id="file-input" accept="image/*">
+    <input type="color" id="background-color-input" value="#ffffff" onchange="changeProfileBackgroundColor()">
+    <img id="profile-picture" src="" alt="Profile Picture" style="margin-bottom: 10px;">
+    <p id="username-display"></p>
+    <p id="bio"></p>
+</div>
+
 
         <div id="profile-inputs">
             <input type="text" id="username-input" placeholder="Update Your Username">
@@ -527,6 +529,14 @@
     sidebar.classList.toggle('active'); // Toggle the 'active' class on the sidebar
     document.body.classList.toggle('sidebar-active'); // Optionally, toggle a class on the body for additional styling
 });
+
+        function changeProfileBackgroundColor() {
+    const profileSection = document.getElementById('profile-section');
+    const selectedColor = document.getElementById('background-color-input').value;
+
+    profileSection.style.backgroundColor = selectedColor;
+}
+
 
        
         function uploadPicture() {
