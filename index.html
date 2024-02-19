@@ -155,12 +155,8 @@
         }
 
         #profile-picture {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            margin-bottom: 10px;
+            max-width: 100%;
+            height: auto;
         }
 
         #username-display {
@@ -336,8 +332,7 @@
             left: 15px;
         }
 
-        /* Media Query for Responsive Design */
-        @media screen and (max-width: 768px)  {
+         @media screen and (max-width: 768px) {
             #sidebar-toggle {
                 display: block;
             }
@@ -345,7 +340,6 @@
             nav a {
                 font-size: 14px;
             }
-
             #profile-inputs {
                 width: 80%;
             }
@@ -353,6 +347,27 @@
             #advertisement-left {
                 width: 100%;
                 right: -100%; /* Move off-screen when closed */
+            }
+
+            /* Adjust styles for smaller screens (e.g., phones) */
+            #file-input,
+            #post-file-input,
+            #study-file-input {
+                display: none;
+            }
+
+            .custom-file-input {
+                background-color: #405de6;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .custom-file-input:hover {
+                background-color: #364fc7;
             }
         }
     </style>
@@ -394,6 +409,8 @@
 
     <main>
         <section id="profile-section">
+            <label for="file-input" class="custom-file-input">Upload Profile Picture</label>
+            <input type="file" id="file-input" accept="image/*">
             <img id="profile-picture" src="" alt="Profile Picture" style="margin-bottom: 10px;">
             <p id="username-display"></p>
             <p id="bio"></p>
@@ -402,35 +419,37 @@
         <div id="profile-inputs">
             <input type="text" id="username-input" placeholder="Update Your Username">
             <input type="text" id="bio-input" placeholder="Update Your Bio...">
-            <input type="file" id="file-input" accept="image/*">
             <div id="profile-buttons">
                 <button onclick="uploadProfile()">Update Profile</button>
                 <button onclick="updateBio()">Update Bio</button>
             </div>
         </div>
 
-        <section id="upload-section">
-            <h2>Upload Picture</h2>
-            <div id="post-section">
-                <!-- Posts will be dynamically added here -->
-            </div>
-            <div id="upload-section">
-                <input type="file" id="post-file-input" accept="image/*">
-                <button onclick="uploadPicture()">Upload Picture</button>
-            </div>
-        </section>
+       <section id="upload-section">
+    <h2>Upload Picture</h2>
+    <label for="post-file-input" class="custom-file-input">Choose a Picture</label>
+    <input type="file" id="post-file-input" accept="image/*">
+    <div id="post-section">
+        <!-- Posts will be dynamically added here -->
+    </div>
+    <div id="upload-section">
+        <button onclick="uploadPicture()">Upload Picture</button>
+    </div>
+</section>
 
-        <section id="biblical-studies-section">
-            <h2>Files</h2>
-            <div id="study-section">
-                <!-- Studies will be dynamically added here -->
-            </div>
-            <div id="add-study-section">
-                <input type="file" id="study-file-input" accept=".pdf, .doc, .docx">
-                <button onclick="uploadStudy()">Upload file</button>
-                <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
-            </div>
-        </section>
+<section id="biblical-studies-section">
+    <h2>Files</h2>
+    <label for="study-file-input" class="custom-file-input">Choose a File</label>
+    <input type="file" id="study-file-input" accept=".pdf, .doc, .docx">
+    <div id="study-section">
+        <!-- Studies will be dynamically added here -->
+    </div>
+    <div id="add-study-section">
+        <button onclick="uploadStudy()">Upload File</button>
+        <textarea id="study-description" placeholder="Add a description for your study..."></textarea>
+    </div>
+</section>
+
 
         <section id="youtube-section">
             <h2>YouTube Videos</h2>
