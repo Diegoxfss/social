@@ -6,22 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background: #f2f2f2; /* Light background color */
-            color: #333;
         }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
         header {
-            background-color: #405de6; /* Primary header color */
+            background-color: #405de6;
             color: white;
             text-align: center;
             padding: 1em;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
+        /* Navigation Styles */
         nav {
             background-color: #333;
             overflow: hidden;
@@ -40,8 +48,9 @@
 
         nav a:hover {
             background-color: #555;
-            color: #ffd700; /* Highlight color */
+            color: #ffd700;
         }
+
 
         nav a::before {
             content: '';
@@ -59,7 +68,7 @@
             left: 0;
         }
 
-        main {
+       main {
             max-width: 800px;
             margin: 20px auto;
             color: #333;
@@ -69,7 +78,6 @@
         section {
             margin-top: 40px;
         }
-
         #sidebar {
             position: fixed;
             left: 0;
@@ -329,7 +337,7 @@
         }
 
         /* Media Query for Responsive Design */
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 768px)  {
             #sidebar-toggle {
                 display: block;
             }
@@ -352,6 +360,11 @@
 </head>
 
 <body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <div id="advertisement-left" class="closed">
         <span class="close-btn" onclick="closeAd()"> &times; </span>
         <h2>Advertisement</h2>
