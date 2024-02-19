@@ -535,14 +535,14 @@
             }
         }
 
-        function createPostElement(file) {
+     function createPostElement(file) {
     const postElement = document.createElement('div');
     postElement.classList.add('post');
 
     const postImage = document.createElement('img');
     postImage.classList.add('post-image');
     postImage.src = URL.createObjectURL(file);
-    postImage.style.maxHeight = '100px'; // Adjust the maximum height as needed
+    postImage.style.maxHeight = '50%'; // Set the maximum height to 50% of the profile picture size
 
     const postActions = document.createElement('div');
     postActions.classList.add('actions', 'post-actions');
@@ -563,6 +563,7 @@
 
     return postElement;
 }
+
 
         function likePost(postElement) {
             // Implementation for liking a post
