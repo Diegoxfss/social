@@ -461,37 +461,36 @@
     </nav>
 
     <main>
-<!-- Inside the #profile-section div -->
 <div id="profile-section">
-    <div id="profile-picture-container">
-        <img id="profile-picture" src="" alt="Profile Picture">
-    </div>
-    <div id="profile-info-container">
-        <p id="username-display"></p>
-        <p id="bio"></p>
-    </div>
+            <div id="profile-info-container">
+                <div id="profile-picture-container">
+                    <img id="profile-picture" src="" alt="Profile Picture">
+                </div>
+                <p id="username-display"></p>
+                <p id="bio"></p>
+            </div>
 
-    <div id="profile-inputs">
-        <label for="file-input" class="custom-file-input">Upload Profile Picture</label>
-        <input type="file" id="file-input" accept="image/*">
+            <div id="profile-inputs">
+                <label for="file-input" class="custom-file-input">Upload Profile Picture</label>
+                <input type="file" id="file-input" accept="image/*">
 
-        <label for="username-input">Update Your Username:</label>
-        <input type="text" id="username-input" placeholder="Enter your username">
+                <label for="username-input">Update Your Username:</label>
+                <input type="text" id="username-input" placeholder="Enter your username">
 
-        <label for="bio-input">Update Your Bio:</label>
-        <input type="text" id="bio-input" placeholder="Enter your bio">
+                <label for="bio-input">Update Your Bio:</label>
+                <input type="text" id="bio-input" placeholder="Enter your bio">
 
-        <div id="profile-buttons">
-            <button onclick="uploadProfile()">Update Profile</button>
-            <button onclick="updateBio()">Update Bio</button>
+                <div id="profile-buttons">
+                    <button onclick="uploadProfile()">Update Profile</button>
+                    <button onclick="updateBio()">Update Bio</button>
+                </div>
+            </div>
+
+            <div id="background-color-container">
+                <label for="background-color-input">Choose Background Color:</label>
+                <input type="color" id="background-color-input" value="#ffffff" onchange="changeProfileBackgroundColor()">
+            </div>
         </div>
-    </div>
-
-    <div id="background-color-container">
-        <label for="background-color-input">Choose Background Color:</label>
-        <input type="color" id="background-color-input" value="#ffffff" onchange="changeProfileBackgroundColor()">
-    </div>
-</div>
 
 
        <section id="upload-section">
