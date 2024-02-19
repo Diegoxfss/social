@@ -427,41 +427,33 @@
     </nav>
 
     <main>
+<!-- Inside the #profile-section div -->
 <div id="profile-section">
     <div id="profile-inputs">
+        <label for="file-input" class="custom-file-input">Upload Profile Picture</label>
+        <input type="file" id="file-input" accept="image/*">
 
+        <label for="username-input">Update Your Username:</label>
+        <input type="text" id="username-input" placeholder="Enter your username">
+
+        <label for="bio-input">Update Your Bio:</label>
+        <input type="text" id="bio-input" placeholder="Enter your bio">
 
         <div id="profile-buttons">
-                <label for="file-input" class="custom-file-input">Upload Profile Picture</label>
-        <input type="file" id="file-input" accept="image/*">
-        <input type="text" id="username-input" placeholder="Update Your Username">
-        <input type="text" id="bio-input" placeholder="Update Your Bio...">
             <button onclick="uploadProfile()">Update Profile</button>
             <button onclick="updateBio()">Update Bio</button>
         </div>
     </div>
 
     <div id="background-color-container">
-        <label for="background-color-input"></label>
+        <label for="background-color-input">Choose Background Color:</label>
         <input type="color" id="background-color-input" value="#ffffff" onchange="changeProfileBackgroundColor()">
     </div>
 
-    <img id="profile-picture" src="" alt="Profile Picture" style="margin-bottom: 10px;">
+    <img id="profile-picture" src="" alt="Profile Picture">
     <p id="username-display"></p>
     <p id="bio"></p>
 </div>
-
-
-
-
-        <div id="profile-inputs">
-            <input type="text" id="username-input" placeholder="Update Your Username">
-            <input type="text" id="bio-input" placeholder="Update Your Bio...">
-            <div id="profile-buttons">
-                <button onclick="uploadProfile()">Update Profile</button>
-                <button onclick="updateBio()">Update Bio</button>
-            </div>
-        </div>
 
        <section id="upload-section">
     <h2>Upload Picture</h2>
