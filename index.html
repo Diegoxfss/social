@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     <style>
-      body {
+    /* Add your styles here */
+        body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: #fff;
+            background: #f8f9fa;
             color: #333;
         }
 
         header {
-            background-color: #cc0000;
+            background-color: #343a40;
             color: white;
             text-align: center;
             padding: 1em;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
         }
 
         nav {
@@ -58,11 +66,13 @@
             left: 0;
         }
 
-      main {
+       main {
             max-width: 800px;
-            margin: 20px auto;
-            color: #333;
-            position: relative;
+            margin: 120px auto 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         #profile-section {
@@ -136,10 +146,10 @@
             border-radius: 5px;
         }
 
-       footer {
+      footer {
             text-align: center;
-            padding: 10px;
-            background-color: #333;
+            padding: 20px;
+            background-color: #343a40;
             color: white;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
             position: fixed;
@@ -254,21 +264,32 @@
             margin-bottom: 10px;
         }
 
+       /* Adjusted Sidebar Styles */
         #sidebar {
-                position: fixed;
-                left: 0;
-                top: 0;
-                height: 100%;
-                width: 200px;
-                background-color: #0f1f4b;
-                box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
-                transition: box-shadow 0.3s, transform 0.3s;
-                transform: translateX(-200px);
-            }
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #007bff;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s, transform 0.3s;
+            transform: translateX(-200px);
+        }
 
-            #sidebar.active {
-                transform: translateX(0);
-            }
+        #sidebar.active {
+            transform: translateX(0);
+        }
+
+     /* Adjusted Navigation Styles */
+        nav {
+            background-color: #343a40;
+            overflow: hidden;
+            position: fixed;
+            top: 70px;
+            width: 100%;
+            z-index: 1000;
+        }
 
             #sidebar ul {
                 list-style: none;
